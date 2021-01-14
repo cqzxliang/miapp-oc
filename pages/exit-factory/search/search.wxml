@@ -1,0 +1,48 @@
+<view>
+  <l-card type="primary" plaintext="{{true}}" l-class="lclass">
+    <view>
+      <view class="content">
+        <text class="title">单据</text>
+        <l-input label="编号" id="p_no" placeholder="请输入单据编号" l-row-class="l-row-class" clear="{{true}}"
+          bind:lininput="pNoKeyIn" bind:linclear="clearPNOInput" value="{{p_no}}"/>
+        <!-- <l-input label="类型" id="typeid" placeholder="请选择单据类型" l-row-class="l-row-class" clear="{{true}}"
+          bind:lininput="typeidKeyIn" bind:linclear="clearTypeInput" value="{{p_no}}"/> -->
+       <view class="select-wrap" wx:if="{{allTypeList.length>0}}">
+        <text  decode="{{true}}" style="font-size:28rpx;width:200rpx;">&nbsp;&nbsp;&nbsp;类型</text>
+        <select class="select" id="select"  options="{{allTypeList}}" key="id" text="name"
+          bind:change="typeChange" ></select>
+      </view>  
+      </view>
+      <view class="content">
+        <text class="title">捡附单</text>
+        <l-input label="单号" id="list_no" placeholder="请输入捡附单号" l-row-class="l-row-class" clear="{{true}}"
+          bind:lininput="listnoKeyIn" bind:linclear="clearListNoInput" value="{{list_no}}"/>
+        <l-input label="料号" id="part_no" placeholder="请输入料号" l-row-class="l-row-class" clear="{{true}}"
+          bind:lininput="partnoKeyIn" bind:linclear="clearPartNoInput" value="{{part_no}}"/>
+      </view>
+      <view class="content">
+        <text class="title">时间</text>
+        <picker mode="date" value="{{s_out_date}}" bindchange="sOutTimeChange">
+          <l-input label="出厂时间起" id="s_out_date" l-row-class="l-row-class" l-label-class="l-label-class"
+            l-input-class="l-input-class" disabled="true" value="{{s_out_date}}" />
+        </picker>
+        <picker mode="date" value="{{e_out_date}}" bindchange="eOutTimeChange">
+          <l-input label="出厂时间止" id="e_out_date" l-row-class="l-row-class" l-label-class="l-label-class"
+            l-input-class="l-input-class" disabled="true" value="{{e_out_date}}" />
+        </picker>
+        <picker mode="date" value="{{s_back_date}}" bindchange="sBackTimeChange">
+          <l-input label="回厂时间起" id="s_back_date" l-row-class="l-row-class" l-label-class="l-label-class"
+            l-input-class="l-input-class" disabled="true" value="{{s_back_date}}" />
+        </picker>
+        <picker mode="date" value="{{e_back_date}}" bindchange="eBackTimeChange">
+          <l-input label="回厂时间止" id="e_back_date" l-row-class="l-row-class" l-label-class="l-label-class"
+            l-input-class="l-input-class" disabled="true" value="{{e_back_date}}" />
+        </picker>
+      </view>
+    </view>
+  </l-card>
+  <view slot="submit" class="form-btn-class">
+    <l-button bind:lintap="save" size="medium" bind:lintap="reset">重置</l-button>
+    <l-button bind:lintap="save" size="medium" bind:lintap="search">查询</l-button>
+  </view>
+</view>

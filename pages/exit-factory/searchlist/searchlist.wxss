@@ -1,0 +1,73 @@
+.lclass{
+  border-radius: 25rpx !important;
+  margin-top: 20rpx !important;
+  margin-bottom: 20rpx !important;
+}
+
+.content{
+  display: flex;
+}
+
+.card-colorbar {
+  position: relative;
+  top: -24rpx;
+  left: -30rpx;
+  float: left;
+  width: 8px;
+  height: 45px;
+  background: #ddd;
+  border-radius: 10px 0 0 0;
+}
+
+.time{
+  margin-top: 20rpx;
+  color: rgb(102,102,102);
+  font-size: 32rpx;
+}
+
+.sign{
+  margin-top: 20rpx;
+  color: rgb(102,102,102);
+  font-size: 32rpx;
+}
+
+.pno{
+  margin-top: 15rpx;
+  font-size: 56rpx;
+  font-weight: bold;
+}
+
+.check{
+  margin-top: 10rpx;
+}
+
+.btn{
+  position: relative;
+  float:right;
+}
+
+
+.green {
+  background: #46E496 !important;
+}
+
+.greenC{
+  color:  #46E496 !important;
+}
+
+.blue {
+  background: #2A8BFF !important;
+}
+
+.blueC {
+  color: #2A8BFF !important;
+}
+
+.purple {
+  background: #7777eb !important;
+}
+
+.purpleC {
+  color: #7777eb !important;
+}
+

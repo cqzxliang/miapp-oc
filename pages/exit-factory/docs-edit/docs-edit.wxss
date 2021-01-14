@@ -1,0 +1,14 @@
+.form-btn-class{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20rpx;
+}
+
+
+.l-form-label-class{
+  min-width: 220rpx !important;
+}
+
+.l-display-form-item-class{
+  display: none !important;
+}

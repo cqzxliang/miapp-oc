@@ -1,0 +1,60 @@
+/* pages/create/create.wxss */
+.section{
+  margin-top: 50rpx;
+}
+
+.picker{
+  display: flex;
+  height: 100rpx;
+}
+
+.bill-view{
+  margin-top: 50rpx;
+}
+
+.bill-content{
+  display: flex;
+  flex-direction: column;
+}
+
+.bill-des{
+  margin-top: 30rpx;
+  margin-left: 60rpx;
+  color: red;
+}
+
+.lclass{
+  border-radius: 25rpx !important;
+}
+
+.l-row-class{
+   height: 2rpx !important;
+   width: 100% !important;
+}
+
+.l-badge-class{
+  font-size: 25rpx !important;
+}
+
+.searchButton{
+  margin-top:10rpx;
+  display: flex;
+  flex-direction:row-reverse;
+}
+
+.delete-right{
+  /* display: block; */
+  cursor: pointer;
+  width: 22rpx;
+  height: 22rpx;
+  position: absolute;
+  top: -18rpx;
+  right: -10rpx;
+   /* background: url(../../images/delete.png) -48px -96px no-repeat;  */
+}
+
+.attachment{
+  display: flex;
+  margin-top:15rpx;
+  
+}

@@ -1,0 +1,31 @@
+<l-grid row-num="2">
+  <l-grid-item id="1"  key="1" slot="1" bind:tap="goToPage">
+    <view style="width:100%">
+      <l-card type="cover" position="right" imageMode="aspectFill" image="../../../images/i1.png">
+        <text class="title">单据申请</text>
+      </l-card>
+    </view>
+  </l-grid-item>
+  <l-grid-item id="2" key="2" slot="2" bind:tap="goToPage">
+    <view style="width:100%">
+      <l-card type="cover" position="right" imageMode="aspectFill" image="../../../images/i2.png">
+        <text class="title">单据查询</text>
+      </l-card>
+    </view>
+  </l-grid-item>
+  <l-grid-item id="3"  key="3" slot="3"  bind:tap="goToPage">
+    <view style="width:100%">
+      <l-card type="cover" position="right" imageMode="scaleToFill" image="../../../images/i3.png">
+        <text class="title">单据列表</text>
+      </l-card>
+      <text></text>
+    </view>
+  </l-grid-item>
+  <l-grid-item id="4"  key="4" slot="4" bind:tap="goToPage">
+    <view style="width:100%">
+      <l-card type="cover" position="right" imageMode="aspectFill" image="../../../images/i4.png">
+        <text class="title">修改数量</text>
+      </l-card>
+    </view>
+  </l-grid-item>
+</l-grid>

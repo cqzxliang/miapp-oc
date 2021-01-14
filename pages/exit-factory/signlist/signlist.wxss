@@ -1,0 +1,24 @@
+/* pages/signlist/signlist.wxss */
+.cotent{
+  margin-bottom: 40rpx;
+}
+
+.title{
+  font-size: medium;
+  font-weight: bold;
+  margin-left: 20rpx;
+}
+
+.lclass{
+  border-radius: 25rpx !important;
+  margin-top: 20rpx !important;
+}
+
+.inTime{
+  position: absolute;
+  right: 10rpx;
+}
+
+.line{
+  display: flex;
+}

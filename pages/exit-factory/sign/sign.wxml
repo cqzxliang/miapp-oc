@@ -1,0 +1,14 @@
+<view wx:if="{{signList.length>0}}">
+  <l-card wx:for="{{dataList}}" wx:key="index" type="primary" plaintext="{{true}}" l-class="lclass">
+    <view bindtap="close" wx:if="{{item.DATA.length>0}}">
+      <view class="select-wrap">
+        <text>{{index+1}}.{{item.GROUP_NAME}}</text>
+        <select class="select" id="select" data-index="{{index}}" options="{{item.DATA}}" key="EMPNO" text="NAME"
+          bind:change="change" defaultOption="{{ {id:signList[index].EMPNO,name:signList[index].NAME} }}"></select>
+      </view>
+    </view>
+  </l-card>
+  <view slot="submit" class="form-btn-class">
+    <l-button  bind:lintap="save"  size="large" disabled="{{formError}}">提交</l-button>
+  </view>
+</view>

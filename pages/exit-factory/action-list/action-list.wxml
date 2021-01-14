@@ -1,0 +1,43 @@
+<view wx:if="{{p_no}}">
+<l-input label="单据号" value="{{p_no}}" l-label-class="l-label-class" l-input-class="l-input-class" disabled="{{true}}"/>
+<l-input label="单据状态" value="{{status}}" l-label-class="l-label-class" l-input-class="l-input-class" disabled="{{true}}"/>
+</view>
+<l-input label="單據類型" value="{{typeDes}}" l-label-class="l-label-class" l-input-class="l-input-class" disabled="{{true}}"/>
+<l-list title="*物品清單" data-page="doc" bind:lintap="goToPage" l-class="l-list" l-content-class="l-content-class"
+   l-right-class="l-right-class">
+   <view slot="right-section">
+      <image wx:if="{{goodListCheck}}" class="list-image" src="/images/right.png"></image>
+      <image wx:else class="list-image" src="/images/stop.png"></image>
+   </view>
+</l-list>
+<!-- <l-list title="包裝方式" data-page="pack" bind:lintap="goToPage" l-class="l-list"  l-content-class="l-content-class" l-right-class="l-right-class">
+   <view slot="right-section"></view>
+</l-list> -->
+<l-list title="*单据内容信息" data-page="content" bind:lintap="goToPage" l-class="l-list" l-content-class="l-content-class"
+   l-right-class="l-right-class">
+   <view slot="right-section">
+      <image wx:if="{{contentCheck}}" class="list-image" src="/images/right.png"></image>
+      <image wx:else class="list-image" src="/images/stop.png"></image>
+   </view>
+</l-list>
+<l-list title="*签核名单確認" data-page="sign" bind:lintap="goToPage" l-class="l-list" l-content-class="l-content-class"
+   l-right-class="l-right-class">
+   <view slot="right-section">
+      <image wx:if="{{signListCheck}}" class="list-image" src="/images/right.png"></image>
+      <image wx:else class="list-image" src="/images/stop.png"></image>
+   </view>
+</l-list>
+<view class="button-view">
+   <view wx:if="{{goodListCheck&&contentCheck&&signListCheck&&status!=='WAITING' && status!=='APPROVED'}}">
+      <l-button size="medium" bind:lintap="save">提交单据</l-button>
+   </view>
+   <view wx:if="{{goodListCheck&&contentCheck&&signListCheck&&(status==='NEW'|| status==='CANCELED')}}">
+      <l-button size="medium"  bind:lintap="sendApprove">送签</l-button>
+   </view>
+   <view wx:if="{{goodListCheck&&contentCheck&&signListCheck&&status==='WAITING'}}">
+      <l-button size="medium"   bind:lintap="cancelApprove">取消送签</l-button>
+   </view>
+   <view wx:if="{{goodListCheck&&contentCheck&&signListCheck}}">
+      <l-button size="medium"  bind:lintap="signlist">签核名单</l-button>
+   </view>
+</view>

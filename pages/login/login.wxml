@@ -1,0 +1,15 @@
+<view class="container">
+	<image class="logo" src="../../images/logo.png"></image>
+	<view style="margin-top:100rpx">
+		<l-input width="600" hide-label="{{true}}" value='{{userName}}' bind:lininput="bindUsernameInput" placeholder="AD账号" />
+		<l-input width="600" type="password"  bind:lininput="bindPasswordInput" hide-label="{{true}}" placeholder="AD密码" />
+		<l-checkbox-group bind:linchange="onChangeTap">
+			<l-checkbox checked="{{rememberAD}}">记住账号</l-checkbox>
+		</l-checkbox-group>
+	</view>
+	<l-button bind:tap="login" width="600" style="margin-top:30rpx" size="large">登录</l-button>
+	<view class="slogan">
+		<view> <text>管理移动化：让信息触手可及</text></view>
+		<text>Let the information at your fingertips</text>
+	</view>
+</view>

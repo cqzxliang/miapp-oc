@@ -1,0 +1,44 @@
+<l-form name="goodItem" is-submit-validate="{{isSubmitValidate}}" l-form-btn-class="l-form-btn-class"
+  bind:linsubmit="submit">
+  <l-form-item label="料号/资产编号" name="PART_NO" l-form-label-class="l-form-label-class"
+    bind:linvalidate="partNoCheck">
+    <l-input id="PART_NO" value="{{goodItem.PART_NO}}" label-width="170" hide-label show-row="{{false}}"
+      disabled="{{!newFlag}}" />
+  </l-form-item>
+  <l-form-item label="英文品名" name="PART_DES" l-form-label-class="l-form-label-class">
+    <l-input id="PART_DES" value="{{goodItem.PART_DES}}" hide-label show-row="{{false}}"
+      disabled="{{!newFlag}}" />
+  </l-form-item>
+  <l-form-item label="中文品名" name="CHINESE" rules="{{requiredRules}}" l-form-label-class="l-form-label-class"
+  bind:linvalidate="descCheck">
+    <l-input id="CHINESE" value="{{goodItem.CHINESE}}" hide-label show-row="{{false}}" />
+  </l-form-item>
+  <l-form-item label="单位" name="UOM" l-form-label-class="l-form-label-class">
+    <l-input id="UOM" value="{{goodItem.UOM}}" hide-label show-row="{{false}}" disabled="true"
+      disabled="{{!newFlag}}" />
+  </l-form-item>
+  <l-form-item label="单价" name="PRICE" l-form-label-class="l-form-label-class">
+    <l-input id="PRICE" value="{{goodItem.PRICE}}" hide-label show-row="{{false}}" disabled="true"
+      disabled="{{!newFlag}}" />
+  </l-form-item>
+  <l-form-item label="数量" name="QTY" l-form-label-class="l-form-label-class">
+    <l-input id="QTY" value="{{goodItem.QTY}}" hide-label show-row="{{false}}" disabled="true" />
+  </l-form-item>
+  <l-form-item label="剩余数量" name="NOT_USE" l-form-label-class="l-form-label-class">
+    <l-input id="NOT_USE" value="{{goodItem.NOT_USE}}" hide-label show-row="{{false}}" disabled="true" />
+  </l-form-item>
+  <l-form-item label="實出数量" name="QTY_USE" rules="{{actQTYRules}}" l-form-label-class="l-form-label-class"
+    bind:linvalidate="qtyUseCheck">
+    <l-input id="QTY_USE" value="{{goodItem.QTY_USE}}" hide-label show-row="{{false}}" />
+  </l-form-item>
+  <l-form-item label="LIST NO " name="LIST_NO"  l-form-item-class="l-display-form-item-class">
+    <l-input id="LIST_NO" value="{{goodItem.LIST_NO}}" hide-label show-row="{{false}}" />
+  </l-form-item>
+  <view class="form-btn-class">
+    <l-button bind:lintap="save" disabled="{{formError}}">提交</l-button>
+    <l-button bind:lintap="delete">删除</l-button>
+  </view>
+</l-form>
+<l-toast />
+<l-dialog show="{{dialogshow}}" type="confirm" show-title="{{false}}" title="标题" content="确定要删除这笔吗？"
+  bind:linconfirm="deleteConfirm" />

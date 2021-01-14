@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "l-card":"/miniprogram_npm/lin-ui/card/index",
+    "x-pagination":"/components/pagination/pagination"
+  },
+  "navigationBarTitleText": "单据申请",
+  "navigationBarBackgroundColor": "#3963BC",
+  "navigationBarTextStyle": "white"
+}

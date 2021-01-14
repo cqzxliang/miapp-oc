@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "l-input":"/miniprogram_npm/lin-ui/input/index",
+    "l-button":"/miniprogram_npm/lin-ui/button/index",
+    "l-checkbox":"/miniprogram_npm/lin-ui/checkbox/index",
+    "l-checkbox-group":"/miniprogram_npm/lin-ui/checkbox-group/index"
+  }
+}

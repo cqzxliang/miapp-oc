@@ -1,0 +1,36 @@
+.l-content-class{
+  margin-left: 30rpx !important;
+  font-size: larger;
+  font-weight: bold;
+}
+
+.l-right-class{
+  margin-right: 30rpx !important;
+}
+
+.list-image{
+  display:flex;
+  text-align: center;
+  height: 40rpx;
+  width: 40rpx;
+  margin-right: 30rpx;
+}
+
+.button-view{
+  display:flex;
+  text-align: center;
+  justify-content: space-around;
+  margin-top: 20rpx;
+}
+
+.l-label-class{
+  margin-left: 10rpx;
+  font-size: 34rpx;
+  font-weight: bold;
+}
+
+.l-input-class{
+  font-size: 30rpx;
+  text-align: right;
+  margin-right: 10rpx;
+}

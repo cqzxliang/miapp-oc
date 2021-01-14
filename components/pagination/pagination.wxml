@@ -1,0 +1,9 @@
+<l-grid row-num="2">
+  <l-grid-item key="1" slot="1">
+    <l-button shape="circle" disabled="{{!hasPrev}}" bind:lintap="prev">上一步</l-button>
+  </l-grid-item>
+  <l-grid-item key="2" slot="2">
+    <l-button shape="circle" disabled="{{!hasNext}}" bind:lintap="next">下一步</l-button>
+  </l-grid-item>
+</l-grid>
+

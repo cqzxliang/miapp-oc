@@ -1,0 +1,20 @@
+<l-segment bind:linchange="changeTabs">
+  <l-segment-item tab="全部" key="all" />
+  <l-segment-item tab="待送簽" key="new" badge-count="{{new_count}}" />
+  <l-segment-item tab="签核中" key="wait" badge-count="{{wait_count}}" />
+  <l-segment-item tab="退件" key="reject" badge-count="{{reject_count}}" />
+  <l-segment-item tab="待出厂" key="approved" badge-count="{{approved_count}}" />
+  <l-segment-item tab="待回厂" key="wait_retrun" badge-count="{{wait_retrun_count}}" />
+  <l-segment-item tab="作废" key="void" badge-count="{{void_count}}" />
+</l-segment>
+<l-card wx:for="{{showList}}" wx:key="index" type="primary" plaintext="{{true}}" l-class="lclass">
+    <view class="content">
+      <view class="card-colorbar {{item.STATUS==='WAITING'?'blue':''}} {{item.STATUS==='APPROVED'?'green':''}} {{item.STATUS==='REJECTED'?'purple':''}}"></view>
+      <view style="width:90%">
+        <view class="time"><text >离厂时间：{{item.OUT_TIME}}<text wx:if="{{item.BACK_TIME}}">~{{item.BACK_TIME}}</text></text></view>
+        <view class="sign {{item.STATUS==='WAITING'?'blueC':''}} {{item.STATUS==='APPROVED'?'greenC':''}} {{item.STATUS==='REJECTED'?'purpleC':''}}"><text> {{item.STATUS}}</text></view> 
+        <view class="pno"> <text> {{item.P_NO}}</text></view>
+        <view class="check"> <l-button data-item="{{item}}" size="mini" class="btn" l-class="btn" bind:lintap="goToDetail">查看详情</l-button></view>
+      </view>
+    </view>
+  </l-card>

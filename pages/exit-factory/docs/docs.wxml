@@ -1,0 +1,6 @@
+<view >
+  <l-list wx:for="{{goodList}}" wx:key="index"  data-index="{{ index }}" bind:lintap="goToDetail" l-content-class="l-content-class">
+    <view slot="left-section">{{item.PART_NO}} {{item.CHINESE}} 实际出货数量:{{item.QTY_USE}} </view>
+  </l-list>
+  <view class="add-v"><text class="add-t" bind:tap="addOne">+ 添加一项</text></view>
+</view>

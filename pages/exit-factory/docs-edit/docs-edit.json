@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "物品清单",
+  "navigationBarBackgroundColor": "#3963BC",
+  "usingComponents": {
+    "l-toast":"/miniprogram_npm/lin-ui/toast/index"
+  }
+}

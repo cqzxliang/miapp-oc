@@ -1,0 +1,13 @@
+<view>
+  <l-card wx:for="{{showList}}" wx:key="index"  type="primary" plaintext="{{true}}" l-class="lclass">
+    <view class="content">
+      <view class="card-colorbar {{item.STATUS==='WAITING'?'blue':''}} {{item.STATUS==='APPROVED'?'green':''}} {{item.STATUS==='REJECTED'?'purple':''}}"></view>
+      <view style="width:90%">
+        <view class="time"><text >离厂时间：{{item.OUT_TIME}}<text wx:if="{{item.BACK_TIME}}">~{{item.BACK_TIME}}</text></text></view>
+        <view class="sign {{item.STATUS==='WAITING'?'blueC':''}} {{item.STATUS==='APPROVED'?'greenC':''}} {{item.STATUS==='REJECTED'?'purpleC':''}}"><text> {{item.STATUS}}</text></view> 
+        <view class="pno"> <text> {{item.P_NO}}</text></view>
+        <view class="check"> <l-button data-item="{{item}}" size="mini" class="btn" l-class="btn" bind:lintap="goToDetail">查看详情</l-button></view>
+      </view>
+    </view>
+  </l-card>
+</view>

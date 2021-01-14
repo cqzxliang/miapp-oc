@@ -1,0 +1,13 @@
+/* pages/exit-factory/exit-factory.wxss */
+
+
+image {
+   width: 150px;
+  height: 100px;
+  display: inline-block; 
+}
+
+.title{
+  font-size: larger;
+  font-weight: bold;
+}

@@ -1,0 +1,16 @@
+<view>
+  <l-card type="primary" plaintext="{{true}}" l-class="lclass">
+    <view>
+      <view class="content">
+        <l-input label="单据号" id="list_no" placeholder="请输入单据号" l-row-class="l-row-class" clear="{{true}}"
+          bind:lininput="pNoKeyIn" bind:linclear="clearPNOInput" value="{{p_no}}"/>
+        <l-input label="捡附单号" id="part_no" placeholder="请输入捡附单号" l-row-class="l-row-class" clear="{{true}}"
+          bind:lininput="listnoKeyIn" bind:linclear="clearListNoInput" value="{{list_no}}"/>
+      </view>
+    </view>
+  </l-card>
+  <view slot="submit" class="form-btn-class">
+    <l-button bind:lintap="save" size="medium" bind:lintap="reset">重置</l-button>
+    <l-button bind:lintap="save" size="medium" bind:lintap="search">查询</l-button>
+  </view>
+</view>

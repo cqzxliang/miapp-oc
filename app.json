@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/application/application",
+    "pages/exit-factory/exit-factory",
+    "pages/exit-factory/create/create",
+    "pages/exit-factory/search/search",
+    "pages/exit-factory/docs/docs",
+    "pages/exit-factory/action-list/action-list",
+    "pages/exit-factory/docs-edit/docs-edit",
+    "pages/exit-factory/content/content",
+    "pages/exit-factory/sign/sign",
+    "pages/exit-factory/signlist/signlist",
+    "pages/exit-factory/searchlist/searchlist",
+    "pages/exit-factory/doc-list/doc-list",
+    "pages/exit-factory/search-mo/search-mo",
+    "pages/exit-factory/search-mo-list/search-mo-list"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "l-button": "/miniprogram_npm/lin-ui/button/index",
+    "l-grid": "/miniprogram_npm/lin-ui/grid/index",
+    "l-grid-item": "/miniprogram_npm/lin-ui/grid-item/index",
+    "l-card": "/miniprogram_npm/lin-ui/card/index",
+    "l-input": "/miniprogram_npm/lin-ui/input/index",
+    "l-badge": "/miniprogram_npm/lin-ui/badge/index",
+    "l-collapse": "/miniprogram_npm/lin-ui/collapse/index",
+    "l-collapse-item": "/miniprogram_npm/lin-ui/collapse-item/index",
+    "l-checkbox": "/miniprogram_npm/lin-ui/checkbox/index",
+    "l-list": "/miniprogram_npm/lin-ui/list/index",
+    "l-radio": "/miniprogram_npm/lin-ui/radio/index",
+    "l-form": "/miniprogram_npm/lin-ui/form/index",
+    "l-form-item": "/miniprogram_npm/lin-ui/form-item/index",
+    "l-toast": "/miniprogram_npm/lin-ui/toast/index",
+    "l-dialog": "/miniprogram_npm/lin-ui/dialog/index",
+    "l-segment": "/miniprogram_npm/lin-ui/segment/index",
+    "l-segment-item": "/miniprogram_npm/lin-ui/segment-item/index"
+  }
+}

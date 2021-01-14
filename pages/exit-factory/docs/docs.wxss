@@ -1,0 +1,19 @@
+.l-content-class{
+  margin-left: 20rpx !important;
+}
+
+.add-v{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  line-height:48rpx;
+   height: 48rpx;
+}
+
+.add-t{
+  margin-top: 10rpx;
+  text-align: center;
+  font-size: larger;
+  width: 100%;
+  color: #3963BC;
+}

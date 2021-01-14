@@ -1,0 +1,30 @@
+<view>
+  <l-card wx:for="{{showList}}" wx:key="index"  type="primary" plaintext="{{true}}" l-class="lclass">
+    <view class="content">
+      <view style="width:90%">
+        <view class="time"><text >离厂时间：{{item.OUT_TIME}}<text wx:if="{{item.BACK_TIME}}">~{{item.BACK_TIME}}</text></text></view>
+        <view class="pno"> <text> {{item.P_NO}}</text></view>
+        <view class="part_no" wx:if="{{item.LIST_NO}}"> <text> 捡附单号:{{item.LIST_NO}} </text></view>
+        <view class="part_no"> <text> 料号：{{item.PART_NO}} - 出货数量:{{item.QTY_USE}}</text></view>
+        <view class="check"> <l-button data-item="{{item}}" size="mini" class="btn" l-class="btn" bind:lintap="showModify">修改数量</l-button></view>
+      </view>
+    </view>
+  </l-card>
+</view>
+
+<view wx:if='{{showModal}}'>
+  <view class='mask_layer' bindtap='modal_click_Hidden' />
+  <view class='modal_box'>
+    <view class="title">修改数量</view>
+    <view class='content'>
+      <!-- <l-input  hide-label="{{true}}" id="list_no" placeholder="请输入修改数量" l-input-class="l-input-class" clear="{{true}}"
+      l-class="l-class"    bind:lininput="pNoKeyIn" bind:linclear="clearPNOInput" value="{{p_no}}"/> -->
+      <!-- <text class='modalMsg'></text> -->
+      <textarea class='input_show1' bindinput='changeModifyQty' auto-height value='{{modifyQty}}' placeholder='请输入修改的数量'></textarea>
+    </view>
+    <view class='btn1'>
+      <view bindtap='modal_click_Hidden' class='cancel'>取消</view>
+      <view bindtap='Sure' class='Sure'>确定</view>
+    </view>
+  </view>
+</view>

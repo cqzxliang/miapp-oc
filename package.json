@@ -1,0 +1,16 @@
+{
+  "name": "miapp-wx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "crypto-js": "^4.0.0",
+    "lin-ui": "^0.8.11",
+    "moment": "^2.29.1"
+  }
+}

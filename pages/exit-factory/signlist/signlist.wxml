@@ -1,0 +1,26 @@
+<!-- <l-collapse wx:if="{{list.length>0}}" type="accordion">
+  <l-collapse-item wx:for="{{list}}"  wx:key="i" wx:for-index="i" title="Revision:{{item.REVISION}}"> -->
+<view class="cotent" wx:for="{{list}}" wx:key="i" wx:for-index="i">
+  <text class="title"> Revision:{{item.REVISION}}</text>
+  <l-card wx:for="{{item.DATA}}" wx:key="j" wx:for-index="j" wx:for-item="line" type="primary" plaintext="{{true}}"
+    l-class="lclass">
+    <view wx:if="{{item.DATA.length>0}}">
+      <view>
+        <view><text>序列:{{line.SEQ}}</text></view>
+        <view class="line">
+          <view><text>{{line.APPROVER}}</text></view>
+          <view class="inTime"><text wx:if="{{line.IN_TIME}}">{{line.IN_TIME}}</text></view>
+        </view>
+        <view class="line"  wx:if="{{line.STATUS && line.STATUS==='WAITING'}}">
+          <view style="color:red"><text>{{line.STATUS}}</text></view>
+          <view class="inTime" wx:if="{{line.OUT_TIME}}"><text>{{line.OUT_TIME}}</text></view>
+        </view>
+        <view class="line"  wx:elif="{{line.STATUS && line.STATUS!=='WAITING'}}">
+          <view><text>{{line.STATUS}}</text></view>
+          <view class="inTime" wx:if="{{line.OUT_TIME}}"><text>{{line.OUT_TIME}}</text></view>
+        </view>
+        <view wx:if="{{line.COMMENTS}}">{{line.COMMENTS}}</view>
+      </view>
+    </view>
+  </l-card>
+</view>

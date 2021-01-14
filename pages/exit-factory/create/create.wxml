@@ -1,0 +1,43 @@
+<view class="section">
+  <l-card type="primary" plaintext="{{true}}" l-class="lclass">
+    <view class="picker">
+      <view style="width:30%">类型:</view>
+      <view style="width:70%;height:100%;">
+        <picker style="height:100%;" mode="multiSelector" bindchange="bindMultiPickerChange"
+          bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+          <view wx:if="{{multiIndex.length>0}}"> {{multiArray[0][multiIndex[0]]}} -> {{multiArray[1][multiIndex[1]]}}
+          </view>
+          <view wx:else> <text style="color:rgb(187,187,187)">请选择单据类型</text></view>
+        </picker>
+      </view>
+    </view>
+  </l-card>
+</view>
+<view class="bill-view" wx:if="{{billtypeList.length>0}}">
+  <l-card  type="primary" plaintext="{{true}}" l-class="lclass">
+    <view class="bill-content">
+      <view style="width:100%">可输入捡附单据类型:</view>
+      <view class="bill-des"><text wx:for="{{billtypeList}}" wx:key="index">{{item.DESCRIPTION}}、</text></view>
+      <view style="margin-top:30rpx;">
+        <l-input bind:lininput="inputInfo" bind:linclear="clearInput" data-item="docno" l-row-class="l-row-class" label="单据号" clear="{{true}}" label-width="170" value="{{docno}}"/>
+      </view>
+      <view class="searchButton">
+        <l-button bind:lintap="addAttachment" style="margin-right:70rpx;" size="mini" type="default">添加</l-button>
+      </view>
+      <view style="margin-top:15rpx;">已添加检附单据：</view>
+      <view class="attachment">
+        <l-grid row-num="2" style="width:100%">
+          <l-grid-item key="{{index}}" slot="{{index}}" wx:for="{{attachmentArray}}" wx:key="index">
+            <l-button plain="{{true}}" size="mini" type="default">{{item}}
+              <view class="delete-right">
+                <image style="width:30rpx;height:30rpx;" bind:tap="deleteAttachment"  src="../../images/delete.png" data-i="{{index}}"></image>
+              </view>
+            </l-button>
+          </l-grid-item>
+        </l-grid>
+      </view>
+    </view>
+  </l-card>
+</view>
+
+<x-pagination hasPrev="{{false}}" hasNext="{{hasNext}}" prevUrl="''" nextUrl="action-list" redirect="true"/>

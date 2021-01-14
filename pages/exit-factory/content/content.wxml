@@ -1,0 +1,126 @@
+<l-form name="formData" is-submit-validate="{{isSubmitValidate}}" l-form-btn-class="l-form-btn-class"
+  bind:linsubmit="submit">
+  <l-form-item label="申请人" name="KEYPERSON_NAME" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+    <l-input id="KEYPERSON_NAME" value="{{formData.KEYPERSON_NAME}}" placeholder="请输入姓名、工号查询" hide-label
+      clear="{{true}}" show-row="{{false}}" bind:lininput="applyKeyIn" bind:linclear="clearKeyPersonInput" />
+  </l-form-item>
+  <view wx:for="{{colleague1}}" wx:key="index" class='lists' data-item="{{item}}" bindtap="chooseKeyPerson">
+    <text>{{item.EMPNO}},{{item.NICK_NAME}},{{item.USER_NAME}}</text>
+  </view>
+  <l-form-item label="分机" name="KEYPERSON_TEL" l-form-label-class="l-form-label-class" bind:linvalidate="">
+    <l-input id="KEYPERSON_TEL" value="{{formData.KEYPERSON_TEL}}" hide-label show-row="{{false}}"
+      disabled="{{true}}" />
+  </l-form-item>
+  <l-form-item label="部门" name="KEYPERSON_DEPT" l-form-label-class="l-form-label-class" bind:linvalidate="">
+    <l-input id="KEYPERSON_DEPT" value="{{formData.KEYPERSON_DEPT}}" hide-label show-row="{{false}}"
+      disabled="{{true}}" />
+  </l-form-item>
+  <l-form-item label="预计出厂" name="OUT_TIME" l-form-label-class="l-form-label-class" rules="{{requiredRules}}"
+    bind:linvalidate="">
+    <picker id="OUT_TIME" style="padding-left:26rpx;" mode="date" value="{{formData.OUT_TIME}}"
+      bindchange="outTimeChange">
+      <view style="width:100%"><text decode="{{true}}">&nbsp;{{formData.OUT_TIME}}</text> </view>
+    </picker>
+  </l-form-item>
+  <view wx:if="{{formData.BACK_FLAG==='Y'}}">
+    <l-form-item label="预计回厂" name="BACK_TIME" l-form-label-class="l-form-label-class" bind:linvalidate=""
+      rules="{{requiredRules}}">
+      <picker style="padding-left:26rpx;" mode="date" value="{{formData.BACK_TIME}}" bindchange="backTimeChange">
+        <view style="width:100%"><text decode="{{true}}">&nbsp;{{formData.BACK_TIME}}</text> </view>
+      </picker>
+    </l-form-item>
+    <l-form-item label="回厂确认人" name="BACK_PERSON" l-form-label-class="l-form-label-class" bind:linvalidate=""
+      rules="{{requiredRules}}">
+      <l-input id="BACK_PERSON" placeholder="请输入姓名、工号查询" value="{{formData.BACK_PERSON}}" hide-label
+        show-row="{{false}}" clear="{{true}}" bind:lininput="backEmpnoKeyIn" bind:linclear="clearBackEmpnoInput" />
+    </l-form-item>
+    <view wx:for="{{colleague3}}" wx:key="index" class='lists' data-item="{{item}}" bindtap="chooseBackEmpno">
+      <text>{{item.EMPNO}},{{item.NICK_NAME}},{{item.USER_NAME}}</text>
+    </view>
+  </view>
+  <l-form-item label="领料地点" name="GET_SITE" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+    <l-input id="GET_SITE" value="{{formData.GET_SITE}}" hide-label show-row="{{false}}" bind:lininput="getSiteKeyIn"
+      placeholder="请输入领料地点" />
+  </l-form-item>
+  <l-form-item label="前往地点" name="OUT_SITE" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+    <l-input id="OUT_SITE" value="{{formData.OUT_SITE}}" hide-label show-row="{{false}}" bind:lininput="outSiteKeyIn"
+      placeholder="请输入前往地点" />
+  </l-form-item>
+  <l-form-item label="本厂员工" l-form-label-class="l-form-label-class" bind:linvalidate="">
+    <view class="switch-view">
+      <switch checked="{{iscompany}}" bindchange="switch1Change" />
+    </view>
+  </l-form-item>
+  <view wx:if="{{iscompany}}">
+    <l-form-item label="出厂人姓名" name="OUT_PERSON" l-form-label-class="l-form-label-class" bind:linvalidate=""
+      rules="{{requiredRules}}">
+      <l-input id="OUT_PERSON" placeholder="请输入姓名、工号查询" value="{{formData.OUT_PERSON}}" hide-label show-row="{{false}}"
+        clear="{{true}}" bind:lininput="outpersonKeyIn" bind:linclear="clearOutPersonInput" />
+    </l-form-item>
+    <view wx:for="{{colleague2}}" wx:key="index" class='lists' data-item="{{item}}" bindtap="chooseOutPerson">
+      <text>{{item.EMPNO}},{{item.NICK_NAME}},{{item.USER_NAME}}</text>
+    </view>
+    <l-form-item label="出厂人电话" name="OUT_MOBILE" l-form-label-class="l-form-label-class" bind:linvalidate="">
+      <l-input id="OUT_MOBILE" value="{{formData.OUT_MOBILE}}" hide-label show-row="{{false}}" disabled="{{true}}" />
+    </l-form-item>
+    <l-form-item label="出厂人公司" name="OUT_COMPANY" l-form-label-class="l-form-label-class" bind:linvalidate="">
+      <l-input id="OUT_COMPANY" value="{{formData.OUT_COMPANY}}" hide-label show-row="{{false}}" disabled="{{true}}" />
+    </l-form-item>
+  </view>
+  <view wx:else>
+    <view wx:if="{{isContainer}}">
+      <l-form-item label="出厂人姓名" name="OUT_PERSON" l-form-label-class="l-form-label-class" bind:linvalidate="">
+        <l-input id="OUT_PERSON" placeholder="请输入出厂人姓名" value="{{formData.OUT_PERSON}}" hide-label show-row="{{false}}"
+          bind:lininput="outPersonKeyIn" />
+      </l-form-item>
+      <l-form-item label="出厂人电话" name="OUT_MOBILE" l-form-label-class="l-form-label-class" bind:linvalidate="">
+        <l-input id="OUT_MOBILE" placeholder="请输入出厂人电话" value="{{formData.OUT_MOBILE}}" hide-label show-row="{{false}}"
+          bind:lininput="outMobileKeyIn" />
+      </l-form-item>
+      <l-form-item label="出厂人公司" name="OUT_COMPANY" l-form-label-class="l-form-label-class" bind:linvalidate="">
+        <l-input id="OUT_COMPANY" placeholder="请输入出厂人公司名称" value="{{formData.OUT_COMPANY}}" hide-label
+          show-row="{{false}}" bind:lininput="outCompanyKeyIn" />
+      </l-form-item>
+    </view>
+    <view wx:else>
+      <l-form-item label="出厂人姓名" name="OUT_PERSON" l-form-label-class="l-form-label-class" bind:linvalidate=""
+        rules="{{requiredRules}}">
+        <l-input id="OUT_PERSON" placeholder="请输入出厂人姓名" value="{{formData.OUT_PERSON}}" hide-label show-row="{{false}}"
+          bind:lininput="outPersonKeyIn" />
+      </l-form-item>
+      <l-form-item label="出厂人电话" name="OUT_MOBILE" l-form-label-class="l-form-label-class" bind:linvalidate=""
+        rules="{{requiredRules}}">
+        <l-input id="OUT_MOBILE" placeholder="请输入出厂人电话" value="{{formData.OUT_MOBILE}}" hide-label show-row="{{false}}"
+          bind:lininput="outMobileKeyIn" />
+      </l-form-item>
+      <l-form-item label="出厂人公司" name="OUT_COMPANY" l-form-label-class="l-form-label-class" bind:linvalidate=""
+        rules="{{requiredRules}}">
+        <l-input id="OUT_COMPANY" placeholder="请输入出厂人公司名称" value="{{formData.OUT_COMPANY}}" hide-label
+          show-row="{{false}}" bind:lininput="outCompanyKeyIn" />
+      </l-form-item>
+    </view>
+
+  </view>
+  <l-form-item label="货柜/车牌号" name="CAR_NO" l-form-label-class="l-form-label-class" bind:linvalidate="">
+    <l-input id="CAR_NO" value="{{formData.CAR_NO}}" hide-label show-row="{{false}}" bind:lininput="carNoKeyIn" />
+  </l-form-item>
+  <l-form-item label="司机名" name="DRIVER" l-form-label-class="l-form-label-class">
+    <l-input id="DRIVER" value="{{formData.DRIVER}}" hide-label show-row="{{false}}" bind:lininput="driverKeyIn" />
+  </l-form-item>
+  <l-form-item label="关锁号" name="KEY_NUMBER" l-form-label-class="l-form-label-class">
+    <l-input id="KEY_NUMBER" value="{{formData.KEY_NUMBER}}" hide-label show-row="{{false}}"
+      bind:lininput="keyNumberKeyIn" />
+  </l-form-item>
+  <!-- <l-form-item label="快递备注" name="EXPRESS_REMARK" l-form-label-class="l-form-label-class">
+    <l-input id="EXPRESS_REMARK" value="{{formData.EXPRESS_REMARK}}" hide-label show-row="{{false}}"
+      bind:lininput="expressRemarkKeyIn" />
+  </l-form-item> -->
+  <l-form-item label="出厂说明" name="REMARK" l-form-label-class="l-form-label-class">
+    <l-input id="REMARK" value="{{formData.REMARK}}" hide-label show-row="{{false}}" bind:lininput="remarkKeyIn" />
+  </l-form-item>
+  <view slot="submit" class="form-btn-class">
+    <l-button size="large" disabled="{{formError}}">提交</l-button>
+  </view>
+</l-form>
+
+<l-toast />

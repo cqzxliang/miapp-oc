@@ -1,0 +1,24 @@
+/* pages/sign/sign.wxss */
+.lclass{
+  border-radius: 25rpx !important;
+  margin-top: 20rpx !important;
+}
+
+.select-wrap{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.select{
+  width: 300rpx;
+}
+
+.form-btn-class{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+

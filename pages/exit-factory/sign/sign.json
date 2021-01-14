@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "签核名单确认",
+  "navigationBarBackgroundColor": "#3963BC",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "select": "/components/select/select"
+  }
+}

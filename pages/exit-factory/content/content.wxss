@@ -1,0 +1,19 @@
+/* pages/content/content.wxss */
+
+.lists{
+  text-align: center;
+  margin-top: 20rpx;
+  color: rgb(80, 75, 70);
+ }
+
+ .switch-view{
+   display: flex;
+   justify-content: flex-end;
+ }
+
+ .form-btn-class{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}

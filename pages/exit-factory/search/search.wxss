@@ -1,0 +1,51 @@
+.content{
+  margin-top: 20rpx;
+}
+
+.title{
+   margin-top: 20rpx;
+   font-size: 28rpx;
+   color: #999;
+}
+
+.l-label-class{
+  color: #333 !important;
+}
+
+.l-input-class{
+  color: #333 !important;
+}
+
+.lclass{
+  border-radius: 25rpx !important;
+  margin-top: 20rpx !important;
+}
+
+.form-btn-class{
+  margin-top: 30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+
+.l-row-class{
+  height: 2rpx !important;
+  width: 100% !important;
+}
+
+.select-wrap{
+  display: flex;
+  flex-direction: row;
+  height: 88rpx;
+  align-items: center;
+  /* justify-content: space-around; */
+  border-bottom: 1px solid;border-color: #f3f3f3;
+ 
+}
+
+.select{
+  /* height: 50rpx; */
+  height: 88rpx;
+  width: 400rpx;
+}
