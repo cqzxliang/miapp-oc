@@ -1,0 +1,36 @@
+.image{
+  margin-left: 25rpx;
+}
+
+.selectContent{
+  margin-left: 25rpx;
+  width: 70%;
+}
+
+
+.form-btn-class{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20rpx;
+}
+
+
+.l-form-label-class{
+  min-width: 220rpx !important;
+}
+
+.l-display-form-item-class{
+  display: none !important;
+}
+
+.submit{
+  margin-top: 20rpx;
+  width: 100%;
+  height: 100%;
+  background:#ffffff;
+  display: flex;
+  flex-direction:column;
+  padding: 0;
+  overflow-y:hidden;
+  text-align: center;
+}

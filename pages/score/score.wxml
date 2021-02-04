@@ -1,0 +1,7 @@
+<view >
+	<block wx:for="{{scoreList}}" wx:key="index">
+	  <x-score-list scorelist="{{item}}"></x-score-list>
+	</block>
+</view>
+
+

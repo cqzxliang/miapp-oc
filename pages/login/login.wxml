@@ -1,8 +1,8 @@
 <view class="container">
 	<image class="logo" src="../../images/logo.png"></image>
 	<view style="margin-top:100rpx">
-		<l-input width="600" hide-label="{{true}}" value='{{userName}}' bind:lininput="bindUsernameInput" placeholder="AD账号" />
-		<l-input width="600" type="password"  bind:lininput="bindPasswordInput" hide-label="{{true}}" placeholder="AD密码" />
+		<l-input l-input-class="l-input-class" width="600" hide-label="{{true}}" value='{{userName}}' bind:lininput="bindUsernameInput" placeholder="AD账号" />
+		<l-input l-input-class="l-input-class" width="600" type="password"  bind:lininput="bindPasswordInput" hide-label="{{true}}" placeholder="AD密码" />
 		<l-checkbox-group bind:linchange="onChangeTap">
 			<l-checkbox checked="{{rememberAD}}">记住账号</l-checkbox>
 		</l-checkbox-group>

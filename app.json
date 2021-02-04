@@ -14,7 +14,19 @@
     "pages/exit-factory/searchlist/searchlist",
     "pages/exit-factory/doc-list/doc-list",
     "pages/exit-factory/search-mo/search-mo",
-    "pages/exit-factory/search-mo-list/search-mo-list"
+    "pages/exit-factory/search-mo-list/search-mo-list",
+    "pages/score/score",
+    "pages/score/score-content/score-content",
+    "pages/repair/repair",
+    "pages/repair/sushe-apply/sushe-apply",
+    "pages/repair/changqu-apply/changqu-apply",
+    "pages/repair/distribute/distribute",
+    "pages/repair/distribute-content/distribute-content",
+    "pages/repair/my-content/my-content",
+    "pages/repair/me/me",
+    "pages/prevention/prevention",
+    "pages/prevention/comfirm-list/comfirm-list",
+    "pages/prevention/comfirm-content/comfirm-content"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -36,11 +48,15 @@
     "l-checkbox": "/miniprogram_npm/lin-ui/checkbox/index",
     "l-list": "/miniprogram_npm/lin-ui/list/index",
     "l-radio": "/miniprogram_npm/lin-ui/radio/index",
+    "l-radio-group": "/miniprogram_npm/lin-ui/radio-group/index",
     "l-form": "/miniprogram_npm/lin-ui/form/index",
     "l-form-item": "/miniprogram_npm/lin-ui/form-item/index",
     "l-toast": "/miniprogram_npm/lin-ui/toast/index",
     "l-dialog": "/miniprogram_npm/lin-ui/dialog/index",
     "l-segment": "/miniprogram_npm/lin-ui/segment/index",
-    "l-segment-item": "/miniprogram_npm/lin-ui/segment-item/index"
+    "l-segment-item": "/miniprogram_npm/lin-ui/segment-item/index",
+    "l-textarea": "/miniprogram_npm/lin-ui/textarea/index",
+    "l-rate": "/miniprogram_npm/lin-ui/rate/index",
+    "l-image-picker": "/miniprogram_npm/lin-ui/image-picker/index"
   }
 }

@@ -1,0 +1,33 @@
+<l-form name="content" is-submit-validate="{{isSubmitValidate}}" l-form-btn-class="l-form-btn-class"
+  bind:linsubmit="submit">
+
+  <l-form-item label="服务部门" name="dept" l-form-label-class="l-form-label-class">
+    <l-input id="dept" value="{{type}}" label-width="170" hide-label show-row="{{false}}"
+      disabled="true" l-input-class="l-input-class"/>
+  </l-form-item>
+
+  <l-form-item label="服务时间" name="time" l-form-label-class="l-form-label-class">
+    <l-input id="dept" value="{{serviceTime}}" label-width="170" hide-label show-row="{{false}}"
+      disabled="true" l-input-class="l-input-class"/>
+  </l-form-item>
+
+  <l-form-item label="问题描述" name="desc" l-form-label-class="l-form-label-class">
+    <l-textarea id="dept" value="{{content.SERVICE_DESC}}" label-width="170" hide-label show-row="{{false}}"
+      indicator="{{false}}" auto-height="{{true}}" l-inner-class="l-inner-class" disabled="true"/>
+  </l-form-item>
+  <l-form-item label="處理人" name="handler" l-form-label-class="l-form-label-class">
+    <l-input id="dept" value="{{handler}}" label-width="170" hide-label show-row="{{false}}"
+      disabled="true" l-input-class="l-input-class"/>
+  </l-form-item>
+  <l-form-item label="评分" name="SCORE" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+    <l-rate score="{{content.SCORE}}" bind:linchange="changeScore" />
+  </l-form-item>
+  <l-form-item label="评语" name="USER_COMMENT" l-form-label-class="l-form-label-class">
+    <l-textarea id="dept"  label-width="170" hide-label show-row="{{false}}"
+    value="{{content.USER_COMMENT}}" indicator="{{false}}" auto-height="{{true}}" bind:lininput="changeComment" l-inner-class="l-inner-class"/>
+  </l-form-item>
+</l-form> 
+
+<view class="submit">
+  <l-button bind:tap="submit" width="600" style="margin-top:30rpx" size="large">评价</l-button>
+</view>

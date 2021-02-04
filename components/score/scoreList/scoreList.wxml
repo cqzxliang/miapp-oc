@@ -1,0 +1,16 @@
+<l-card type="primary" plaintext="{{true}}" l-class="lclass"  bind:tap="goToSocreContent">
+  <view class="content">
+    <view>
+      <!-- <view><text>{{scorelist.DOCNO}}</text> <text class="handler">处理人:{{handler}}</text></view> -->
+      <view><text>{{type}}</text> <text class="handler">处理人:{{handler}}</text></view>
+      <view><text>需求人：{{contact}}</text></view>
+      <view><text>服务时间: {{serviceData}}</text>
+        <text wx:if="{{scorelist.START_TIME||scorelist.START_TIME==='null'}}" class="time">{{scorelist.START_TIME}}~{{scorelist.END_TIME}}</text>
+      </view>
+      <view class="desc" style="width:100%;">
+        <view style="width:30%;">问题描述：</view>
+        <view style="width:70%;"><text>{{scorelist.SERVICE_DESC}}</text></view>
+      </view>
+    </view>
+  </view>
+</l-card>

@@ -1,0 +1,70 @@
+<view wx:if="{{formData.OK_FLAG==='Y'}}" class="approve">
+  <view><text>已审核通过</text></view>
+</view>
+<view wx:if="{{formData.OK_FLAG==='N' && formData.ID>0}}" class="wait">
+  <view><text>待审核</text></view>
+</view>
+<l-form name="formData" is-submit-validate="{{isSubmitValidate}}" l-form-btn-class="l-form-btn-class"
+  bind:linsubmit="submit">
+  <l-form-item label="填写人" name="dept" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+    <l-input id="dept" value="{{contact}}" label-width="170" hide-label show-row="{{false}}" disabled="true"
+      l-input-class="l-input-class" />
+  </l-form-item>
+  <l-form-item label="类别" name="BX_TYPE" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+    <l-radio-group bind:linchange="radioChange" current="{{formData.TYPE}}">
+      <l-radio key="未出行佛山市外">未出行佛山市外</l-radio>
+      <l-radio key="出行佛山市外廣東省內">出行佛山市外廣東省內</l-radio>
+      <l-radio key="出行廣東省外">出行廣東省外</l-radio>
+    </l-radio-group> 
+  </l-form-item>
+  <l-form-item wx:if="{{formData.TYPE==='出行廣東省外'}}" label="次数" name="TIMES" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+    <l-radio-group bind:linchange="timesChange" current="{{formData.TIMES}}">
+      <l-radio key="first">第一次核酸检测</l-radio>
+      <l-radio key="two">第二次核酸检测</l-radio>
+      <l-radio key="three">第三次核酸检测</l-radio>
+    </l-radio-group>
+  </l-form-item>
+  <l-form-item label="返岗时间" wx:if="{{formData.TIMES==='first'}}" name="IDATE" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+    <picker id="OUT_TIME" style="padding-left:26rpx;" mode="date" value="{{formData.IDATE}}" bindchange="timeChange">
+      <view style="width:100%"><text decode="{{true}}">&nbsp;{{formData.IDATE}}</text> </view>
+    </picker>
+  </l-form-item>
+  <l-form-item label="有无感冒症状" name="COLD_FLAG" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+    <l-radio-group bind:linchange="coldChange" current="{{formData.COLD_FLAG}}">
+      <l-radio key="N">无</l-radio>
+      <l-radio key="Y">有</l-radio>
+    </l-radio-group>
+  </l-form-item>
+  <l-form-item wx:if="{{formData.COLD_FLAG==='Y'}}" label="具体症状" name="REMARK" l-form-label-class="l-form-label-class"
+    rules="{{requiredRules}}">
+    <l-input id="dept" value="{{formData.REMARK}}" label-width="170" hide-label show-row="{{false}}"
+      l-input-class="l-input-class" bind:lininput="remarkKeyIn" />
+  </l-form-item>
+  <l-form-item wx:if="{{formData.TIMES==='first'}}" label="粤康码" name="yuekang" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+    <l-image-picker urls="{{yuekangUrls}}" count="1" clear="{{ isClear }}" l-class="image" data-type="yuekang"
+      bind:linchange="addImage" bind:linremove="removeImage" />
+  </l-form-item>
+  <l-form-item wx:if="{{formData.TIMES==='first'}}" label="行程码" name="trip" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+    <l-image-picker urls="{{tripUrls}}" count="1" clear="{{ isClear }}" l-class="image" data-type="trip" bind:linchange="addImage"
+      bind:linremove="removeImage" />
+  </l-form-item>
+  <l-form-item wx:if="{{formData.TYPE==='出行廣東省外' && formData.TIMES==='first'}}" label="核酸检测1" name="nucleic1"
+    l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+    <l-image-picker urls="{{nucleic1Urls}}" count="1" clear="{{ isClear }}" l-class="image" data-type="nucleic1" bind:linchange="addImage"
+      bind:linremove="removeImage" />
+  </l-form-item>
+  <l-form-item  wx:if="{{formData.TYPE==='出行廣東省外'&& formData.TIMES==='two'}}" label="核酸检测2" name="nucleic2"
+    l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+    <l-image-picker urls="{{nucleic2Urls}}"  count="1" clear="{{ isClear }}" l-class="image" data-type="nucleic2" bind:linchange="addImage"
+      bind:linremove="removeImage" />
+  </l-form-item>
+  <l-form-item  wx:if="{{formData.TYPE==='出行廣東省外'&& formData.TIMES==='three'}}" label="核酸检测3" name="nucleic3"
+    l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+    <l-image-picker urls="{{nucleic3Urls}}" count="1" clear="{{ isClear }}" l-class="image" data-type="nucleic3" bind:linchange="addImage"
+      bind:linremove="removeImage" />
+  </l-form-item>
+</l-form>
+
+<view class="submit">
+  <l-button bind:tap="submit" width="600"  style="margin-top:30rpx" size="large">提交</l-button>
+</view>

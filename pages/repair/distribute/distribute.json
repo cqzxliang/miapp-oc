@@ -1,0 +1,9 @@
+
+  {
+    "navigationBarTitleText": "服務分配",
+    "navigationBarBackgroundColor": "#3963BC",
+    "navigationBarTextStyle": "white",
+    "usingComponents": {
+      "x-service-list":"/components/serviceList/serviceList"
+    }
+  }

@@ -1,0 +1,55 @@
+<l-form name="formData" is-submit-validate="{{isSubmitValidate}}" l-form-btn-class="l-form-btn-class"
+  bind:linsubmit="submit">
+  <l-form-item label="填写人" name="dept" l-form-label-class="l-form-label-class">
+    <l-input id="dept" value="{{formData.NAME}}" label-width="170" hide-label show-row="{{false}}" disabled="true"
+      l-input-class="l-input-class" />
+  </l-form-item>
+  <l-form-item label="类别" name="BX_TYPE" l-form-label-class="l-form-label-class">
+    <l-input id="dept" value="{{formData.TYPE}}" label-width="170" hide-label show-row="{{false}}" disabled="true"
+      l-input-class="l-input-class" />
+  </l-form-item>
+  <l-form-item wx:if="{{formData.TYPE==='出行廣東省外'}}" label="次数" name="TIMES" l-form-label-class="l-form-label-class">
+    <l-input wx:if="{{formData.TIMES==='first'}}" id="dept" value="第一次核酸检测" label-width="170" hide-label
+      show-row="{{false}}" disabled="true" l-input-class="l-input-class" />
+    <l-input wx:if="{{formData.TIMES==='two'}}" id="dept" value="第二次核酸检测" label-width="170" hide-label
+      show-row="{{false}}" disabled="true" l-input-class="l-input-class" />
+    <l-input wx:if="{{formData.TIMES==='three'}}" id="dept" value="第三次核酸检测" label-width="170" hide-label
+      show-row="{{false}}" disabled="true" l-input-class="l-input-class" />
+  </l-form-item>
+  <l-form-item label="返岗时间" wx:if="{{formData.TIMES==='first'}}" name="IDATE" l-form-label-class="l-form-label-class">
+    <l-input id="dept" value="{{formData.R_DATE}}" label-width="170" hide-label show-row="{{false}}" disabled="true"
+      l-input-class="l-input-class" />
+  </l-form-item>
+  <l-form-item label="有无感冒症状" name="COLD_FLAG" l-form-label-class="l-form-label-class">
+    <l-input wx:if="{{formData.COLD_FLAG==='Y'}}" id="dept" value="有" label-width="170" hide-label show-row="{{false}}"
+      disabled="true" l-input-class="l-input-class" />
+    <l-input wx:if="{{formData.COLD_FLAG==='N'}}" id="dept" value="无" label-width="170" hide-label show-row="{{false}}"
+      disabled="true" l-input-class="l-input-class" />
+  </l-form-item>
+  <l-form-item wx:if="{{formData.COLD_FLAG==='Y'}}" label="具体症状" name="REMARK" l-form-label-class="l-form-label-class">
+    <l-input id="dept" value="{{formData.REMARK}}" label-width="170" hide-label show-row="{{false}}" disabled="true"
+      l-input-class="l-input-class" bind:lininput="remarkKeyIn" />
+  </l-form-item>
+  <l-form-item wx:if="{{formData.TIMES==='first'}}" label="粤康码" name="yuekang" l-form-label-class="l-form-label-class">
+    <l-image-picker urls="{{yuekangUrls}}" count="1" l-class="image" />
+  </l-form-item>
+  <l-form-item wx:if="{{formData.TIMES==='first'}}" label="行程码" name="trip" l-form-label-class="l-form-label-class">
+    <l-image-picker urls="{{tripUrls}}" count="1" l-class="image" />
+  </l-form-item>
+  <l-form-item wx:if="{{formData.TYPE==='出行廣東省外' && formData.TIMES==='first'}}" label="核酸检测1" name="nucleic1"
+    l-form-label-class="l-form-label-class">
+    <l-image-picker urls="{{nucleic1Urls}}" count="1" l-class="image" />
+  </l-form-item>
+  <l-form-item wx:if="{{formData.TYPE==='出行廣東省外'&& formData.TIMES==='two'}}" label="核酸检测2" name="nucleic2"
+    l-form-label-class="l-form-label-class">
+    <l-image-picker urls="{{nucleic2Urls}}" count="1" l-class="image" />
+  </l-form-item>
+  <l-form-item wx:if="{{formData.TYPE==='出行廣東省外'&& formData.TIMES==='three'}}" label="核酸检测3" name="nucleic3"
+    l-form-label-class="l-form-label-class">
+    <l-image-picker urls="{{nucleic3Urls}}" count="1" l-class="image" />
+  </l-form-item>
+</l-form>
+
+<view class="submit">
+  <l-button bind:tap="submit" width="600" style="margin-top:30rpx" size="large">审核</l-button>
+</view>

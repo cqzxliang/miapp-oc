@@ -1,0 +1,5 @@
+<view >
+	<block wx:for="{{susheList}}" wx:key="index">
+	  <x-service-list  servicelist="{{item}}"></x-service-list>
+	</block>
+</view>

@@ -1,0 +1,9 @@
+.lclass{
+  border-radius: 25rpx !important;
+  margin-top: 20rpx !important;
+  margin-bottom: 20rpx !important;
+}
+
+.content{
+  display: flex;
+}

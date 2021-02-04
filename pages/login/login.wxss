@@ -6,6 +6,7 @@
   flex-direction:column;
   padding: 0;
   overflow-y:hidden;
+  font-size: 28rpx;
 }
 
 .logo{
@@ -22,9 +23,13 @@
 
 .slogan{
   color: #2E5485;
-  font-size: 14px;
+  font-size: 30rpx;
   position: fixed;
   text-align: center;
   bottom: 20px;
-  width: calc(100% - 64px);
+  /* width: calc(100% - 64px); */
+}
+
+.l-input-class{
+  font-size: 38rpx;
 }

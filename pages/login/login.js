@@ -101,6 +101,7 @@ Page({
       wx.removeStorageSync('rememberAD');
     }
     let loginSuccess = await auth.login({'userName':this.data.userName,'password':this.data.password});
+    // let loginSuccess = await auth.login({'userName':this.data.userName,'password':'pass147'});
     if(loginSuccess){
       wx.redirectTo({
         url: '/pages/application/application'
