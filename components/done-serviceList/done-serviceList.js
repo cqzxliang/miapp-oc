@@ -1,7 +1,7 @@
 const util = require('../../utils/util');
 const auth = require('../../core/auth');
 const getUserUrl = 'Guid/GetUserLikeNoSite';
-// components/serviceList/serviceList.js
+// components/done-serviceList/done-serviceList.js
 Component({
   /**
    * 组件的属性列表
@@ -13,33 +13,37 @@ Component({
     type: {
       type: String
     },
+    contact: {
+      type: String
+    },
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    handler: '',
-    contact: '',
-    serviceData: '',
-    desc: ''
+
   },
   observers: {
-    //   ['servicelist.HANDLER'](val) {
-    //    var handlerList = val.split(','); 
-    //    this.changeName(handlerList[0], 'CH(NO)').then((v)=>{
-    //      this.setData({
-    //        handler: v
-    //      })
-    //    });
-    //  },
-    ['servicelist.CONTACT'](val) {
-      this.changeName(val, '{NICK_NAME} {TELEPHONE} / {MOBILE}').then((v) => {
-        this.setData({
-          contact: v
-        })
-      });
-    },
+    async  ['servicelist.STATUS'](val) {
+       let status ='';
+       let rank ='';
+       if (val==='New'){
+         status='待受理';
+       }else if (val==='WAITING'){
+        status='待签核';
+      }else if (val==='Closed'){
+        status='已结案';
+      }else if (val==='Scoring'){
+        status='待评分';
+      }else if (val==='Processing'){
+        status='处理中';
+        // rank = await this.getRank(this.properties.servicelist.ID);      
+      }
+      this.setData({
+        status: status
+      })
+     },
     ['servicelist.SERVICE_DATE'](val) {
       let serviceData = val.slice(0, 10)
       this.setData({
@@ -57,7 +61,13 @@ Component({
         desc: desc
       })
     },
-
+    ['servicelist.CONTACT'](val) {
+      this.changeName(val, '{NICK_NAME} {TELEPHONE} / {MOBILE}').then((v) => {
+        this.setData({
+          contact: v
+        })
+      });
+    },
   },
   /**
    * 组件的方法列表
@@ -81,7 +91,7 @@ Component({
     },
     goToDistributeContent() {
       wx.navigateTo({
-        url: `/pages/repair/distribute-content/distribute-content?data=${ JSON.stringify(this.properties.servicelist)}&type=distribute`,
+        url: `/pages/repair/distribute-content/distribute-content?data=${ JSON.stringify(this.properties.servicelist)}&type=done`,
       })
     }
   }

@@ -4,6 +4,7 @@
   "navigationBarTextStyle": "white",
   "usingComponents": {
     "select": "/components/select/select",
-    "select-empno": "/components/select-empno/select-empno"
+    "select-empno": "/components/select-empno/select-empno",
+    "l-toast":"/miniprogram_npm/lin-ui/toast/index"
   }
 }

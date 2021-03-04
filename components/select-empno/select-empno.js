@@ -1,4 +1,5 @@
 const auth = require('../../core/auth');
+const util = require('../../utils/util');
 
 Component({
   properties: {
@@ -9,8 +10,8 @@ Component({
     defaultOption: {
       type: Object,
       value: {
-        id:' ',
-        name:' '
+        id:'',
+        name:''
       }
     },
     key: {
@@ -61,6 +62,11 @@ Component({
   lifetimes: {
   async attached() {
       // 属性名称转换, 如果不是 { id: '', name:'' } 格式，则转为 { id: '', name:'' } 格式   
+      wx.showLoading({
+        title: '加载中',
+        mask: true,
+      })
+
       const getUserUrl = 'Guid/GetUserLikeNoSite';
 
       let result = []
@@ -75,10 +81,19 @@ Component({
       }else{
         result = this.data.options;
       }
+      let defaultOption;
+      
+      if(!util.isNull(this.data.defaultOption.id)){
+        let res1 = await auth.request('GET', getUserUrl, {
+          emp_name: this.data.defaultOption.id
+        })
+        defaultOption = { id:this.data.defaultOption.id, name:res1.data[0].NICK_NAME};
+      }
       this.setData({
-        current: Object.assign({},this.data.defaultOption),
+        current: Object.assign({},defaultOption),
         result: result
       })
+      wx.hideLoading()
     }
   }
 })

@@ -41,7 +41,19 @@
     <l-input id="HANDLER" value="{{handler}}" label-width="170" hide-label show-row="{{false}}"
          disabled="true" l-input-class="l-input-class"/>
   </l-form-item>
+  <l-form-item wx:if="{{content.STATUS==='Scoring'}}" label="评分" name="SCORE" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+    <l-rate score="{{content.SCORE}}" bind:linchange="changeScore" />
+  </l-form-item>
+  <l-form-item wx:if="{{content.STATUS==='Scoring'}}" label="评语" name="USER_COMMENT" l-form-label-class="l-form-label-class">
+    <l-textarea id="USER_COMMENT"  label-width="170" hide-label show-row="{{false}}"
+    value="{{content.USER_COMMENT}}" indicator="{{false}}" auto-height="{{true}}" bind:lininput="changeComment" l-inner-class="l-inner-class"/>
+  </l-form-item>
 </l-form>
+
+<view class="submit" wx:if="{{content.STATUS==='Scoring'}}">
+  <l-button bind:tap="submit" width="600" style="margin-top:30rpx" size="large">评价</l-button>
+</view>
+
 
 <!-- <view class="submit">
   <l-button bind:tap="submit" width="600" style="margin-top:30rpx" size="large">提交</l-button>

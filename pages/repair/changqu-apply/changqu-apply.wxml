@@ -8,10 +8,10 @@
     <l-input id="dept" value="{{formData.ROOM_NO}}" label-width="170" hide-label show-row="{{false}}"
     bind:lininput="roomNoKeyIn" l-input-class="l-input-class"/>
   </l-form-item>
-  <l-form-item wx:if="{{engineerFlag}}" label="类别:" name="BX_TYPE" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+  <l-form-item label="类别:" name="BX_TYPE" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
       <l-radio-group  bind:linchange="radioChange" current="{{formData.BX_TYPE}}">
-        <l-radio key="factory">修缮类</l-radio>
-        <l-radio key="engineer">工程类</l-radio>
+        <l-radio key="factory">维修类</l-radio>
+        <l-radio wx:if="{{engineerFlag}}"  key="engineer">工程类</l-radio>
       </l-radio-group>
   </l-form-item>
   <l-form-item label="問題類型" name="TYPE" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
@@ -39,7 +39,7 @@
       <view style="width:100%"><text decode="{{true}}">&nbsp;{{formData.SERVICE_DATE}}</text> </view>
     </picker>
   </l-form-item>
-  <l-form-item label="處理人" name="HANDLER" l-form-label-class="l-form-label-class" >
+  <l-form-item wx:if="{{ownerFlag}}" label="處理人" name="HANDLER" l-form-label-class="l-form-label-class" >
     <view class="selectContent">
       <select-empno wx:if="{{currentHandlerList.length>0}}" class="select" id="select-empno" data-index="1"
         options="{{currentHandlerList}}" key="DESCRIPTION" text="DESCRIPTION" bind:change="handlerChange">

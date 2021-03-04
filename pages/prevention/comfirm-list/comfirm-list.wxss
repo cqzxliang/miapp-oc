@@ -1,1 +1,39 @@
 /* pages/prevention/comfirm-list/comfirm-list.wxss */
+
+.searchContent
+{
+  display: flex;
+  align-items: center;
+  justify-content:space-around;
+  width:90%;
+  height:60rpx;
+  background-color:whitesmoke;
+  margin-top: 5%;
+  border:1rpx solid whitesmoke;
+  border-radius: 10rpx;
+}
+
+.search
+{
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+
+  width:100%;
+}
+
+/* 搜索框提示文字样式 */
+.searchContent input
+{
+  font-size:27rpx;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-left:30rpx; 
+}
+
+.searchContent image
+{ 
+  right: 0rpx;
+  width:40rpx;
+  height:40rpx;
+  padding-right:20rpx;
+}

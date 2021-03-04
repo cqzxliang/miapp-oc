@@ -169,9 +169,7 @@ Page({
               imageUrl = imageUrl + ',' + url;
             }
           }
-        } catch (error) {
-          console.log(error);
-          
+        } catch (error) {         
           wx.showToast({
             title: '上传图片失败，请联系MIS',
             icon: 'none'

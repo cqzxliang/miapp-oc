@@ -76,6 +76,10 @@ Page({
           susheList: listTemp
         })
 
+      }else {
+        this.setData({
+          susheList:[]
+         })
       }
     }
 

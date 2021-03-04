@@ -24,7 +24,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(options.data);
 
     let data = JSON.parse(options.data);
     this.setData({
@@ -44,7 +43,6 @@ Page({
       title: '信息提醒',
       content: '是否確認OK',
     }).then(res => {
-      console.log(res);
       if (res.confirm) {
         sendConfirm = true;
       }

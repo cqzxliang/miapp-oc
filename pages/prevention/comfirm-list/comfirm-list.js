@@ -11,7 +11,8 @@ Page({
    */
   data: {
      comfirmList:[],
-     showList:[]
+     showList:[],
+     inputValue:'',
   },
 
   /**
@@ -20,7 +21,27 @@ Page({
   onLoad: function (options) {
 
   },
-
+  inputBind(event){
+    this.setData({
+      inputValue: event.detail.value
+    })
+  },
+ async query(){
+    let userInfo = app.getUserInfo();
+    let res = await auth.request('GET', getList, {
+      empno:'',
+      deptno:this.data.inputValue
+    })
+    if (res && res.data.length >= 0) {
+      page = 1;
+      const showList = res.data.slice(0,pageCount);
+      
+      this.setData({
+        comfirmList: res.data,
+        showList:showList
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

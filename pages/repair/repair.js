@@ -88,5 +88,10 @@ Page({
         url: '/pages/repair/distribute/distribute'
       })
     }
+    else if(page.currentTarget.id === '5') {
+      wx.navigateTo({
+        url: '/pages/repair/done/done'
+      })
+    }
   }
 })

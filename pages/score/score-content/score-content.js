@@ -151,6 +151,10 @@ Page({
   },
  async submit(){
      if (this.data.content && this.data.content.SCORE>0) {
+      wx.showLoading({
+        title: '提交中',
+        mask: true,
+      });
       let data=  this.data.content;
       let res = await auth.request('POST', postServiceUrl, {
         ID: data.ID,
@@ -159,6 +163,7 @@ Page({
         USER_COMMENT:data.USER_COMMENT,
         STATUS:'Closed'
       });
+      wx.hideLoading();
       wx.navigateBack();
       wx.showToast({
         title: '评价完成！',

@@ -5,6 +5,7 @@ const getLookupUrl = 'IPQA/GetMRILookup';
 const postService = 'reservations/applications';
 
 
+
 // pages/repair/distribute-content/distribute-content.js
 Page({
 
@@ -152,7 +153,20 @@ Page({
   onUnload: function () {
 
   },
-
+  changeScore(e) {
+    this.setData({
+      content: Object.assign(this.data.content, {
+        SCORE: e.detail.score
+      })
+    })
+  },
+  changeComment(e) {
+    this.setData({
+      content: Object.assign(this.data.content, {
+        USER_COMMENT: e.detail.value
+      })
+    })
+  },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
@@ -172,5 +186,32 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  async submit(){
+    if (this.data.content && this.data.content.SCORE>0) {
+      wx.showLoading({
+        title: '提交中',
+        mask: true,
+      });
+     let data=  this.data.content;
+     let res = await auth.request('POST', postService, {
+       ID: data.ID,
+       DOCNO:data.DOCNO,
+       SCORE:data.SCORE,
+       USER_COMMENT:data.USER_COMMENT,
+       STATUS:'Closed'
+     });
+     wx.hideLoading();
+     wx.navigateBack();
+     wx.showToast({
+       title: '评价完成！',
+       icon: 'none'
+     })
+   }else{
+     wx.showToast({
+       title: '请填写评分',
+       icon: 'none'
+     })
+   }
+ }
 })

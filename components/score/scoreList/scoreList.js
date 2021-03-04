@@ -13,12 +13,15 @@ Component({
   },
   observers: {
     ['scorelist.HANDLER'](val) {
-      var handlerList = val.split(',');
-      this.changeName(handlerList[0], 'CH(NO)').then((v) => {
-        this.setData({
-          handler: v
-        })
-      });
+      if (!util.isNull(val)) {
+        var handlerList = val.split(',');
+        // var handlerList = val;
+        this.changeName(handlerList[0], 'CH(NO)').then((v) => {
+          this.setData({
+            handler: v
+          })
+        });
+      }
     },
     ['scorelist.CONTACT'](val) {
       this.changeName(val, '{NICK_NAME} {TELEPHONE} / {MOBILE}').then((v) => {

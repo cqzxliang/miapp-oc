@@ -42,6 +42,8 @@ Page({
     isClear: false,
     engineerFlag: false,
     ownerFlag: false,
+    typeHandler:'',
+    handlerType:'',
     requiredRules: {
       required: true,
     },
@@ -75,39 +77,44 @@ Page({
 
     let userInfo = app.getUserInfo();
 
+        //判斷是否填自己的單
+     const handlerRes = await auth.getLookUp('BX_SERVICE_HANDLER');
+        let ownerFlag = false;
+        let self = [];
+        let currentHandlerList = [];
+        if (handlerRes && handlerRes.data.length > 0) {
+          self = handlerRes.data.filter((d) => d.DESCRIPTION === userInfo.EMPNO);
+          
+          if (self.length > 0) {
+            ownerFlag = true;
+            handlerRes.data.forEach(element => {
+              if (element.LOOKUP_CODE === self[0].LOOKUP_CODE) {
+                currentHandlerList.push({
+                  DESCRIPTION: element.DESCRIPTION
+                });
+              }
+            });
+          }
+    
+        }
+
     //判斷是否助理或者IE，才能挑選到工程類
     let flagRes = await auth.request('GET', 'reservations/checkEngineeringFlag', {
       empno: userInfo.EMPNO
     })
     let engineerFlag = false;
-    if (flagRes.data === 'Y') {
+    if (flagRes.data === 'Y' || ownerFlag) {
       engineerFlag = true;
     }
 
-    //判斷是否填自己的單
-    const handlerRes = await auth.getLookUp('BX_SERVICE_HANDLER');
-    let ownerFlag = false;
-    let self = [];
-    let currentHandlerList = [];
-    if (handlerRes && handlerRes.data.length > 0) {
-      self = handlerRes.data.filter((d) => d.DESCRIPTION === userInfo.EMPNO);
-      if (self.length > 0) {
-        ownerFlag = true;
-        currentHandlerList.push({
-          DESCRIPTION: self[0].DESCRIPTION
-        });
-      }
 
-    }
 
 
     const defaultData = moment().add(3, 'd').format('YYYY-MM-DD');
 
     const typeRes = await auth.getLookUp('BX_SERVICE_TYPE');
     const typeList = typeRes.data;
-    const currTypeList = typeList.filter((d) => d.LOOKUP_CODE !== '氣源類')
-    console.log(currentHandlerList);
-    
+    // const currTypeList = typeList.filter((d) => d.LOOKUP_CODE !== '氣源類')
 
     this.setData({
       handler: userInfo.NICK_NAME,
@@ -117,7 +124,7 @@ Page({
         MOBILE: userInfo.MOBILE
       }),
       typeList: typeList,
-      currTypeList: currTypeList,
+      currTypeList: typeList,
       engineerFlag: engineerFlag,
       ownerFlag: ownerFlag,
       selfType: self[0],
@@ -167,43 +174,69 @@ Page({
     })
   },
   radioChange(r) {
-    this.setData({
-      currTypeList: []
-    })
-    let currTypeList;
+    // this.setData({
+    //   currTypeList: []
+    // })
+    // let currTypeList;
 
-    if (r.detail.key === 'engineer') {
-      currTypeList = this.data.typeList
-    } else if (r.detail.key === 'factory') {
-      currTypeList = this.data.typeList.filter((d) => d.LOOKUP_CODE !== '氣源類')
-    }
+    // if (r.detail.key === 'engineer') {
+    //   currTypeList = this.data.typeList
+    // } else if (r.detail.key === 'factory') {
+    //   currTypeList = this.data.typeList.filter((d) => d.LOOKUP_CODE !== '氣源類')
+    // }
 
     this.setData({
       content: Object.assign(this.data.formData, {
         BX_TYPE: r.detail.key
       }),
-      currTypeList: currTypeList
+      // currTypeList: this.data.typeList
     })
 
-    this.select = this.selectComponent('#select-content');
-
-
-    this.select.clean();
+    // this.select = this.selectComponent('#select-content');
+    // this.select.clean();
   },
   typeChange(e) {
     const type = this.data.typeList.filter(m => m.LOOKUP_CODE === e.detail.name);
     this.setData({
       content: Object.assign(this.data.formData, {
         TYPE: e.detail.name,
-        HANDLER: type[0].DESCRIPTION
+        HANDLER:''
+      }),
+        typeHandler: type[0].DESCRIPTION
+    })
+       this.select_empno = this.selectComponent('#select-empno');
+    this.select_empno.clean();
+  },
+  handlerChange(e) {
+    if(util.isNull(e.detail.id)){
+
+    this.setData({
+      content: Object.assign(this.data.formData, {
+        HANDLER: e.detail.id?e.detail.id:''
       })
     })
+  } else {  
+    this.setData({
+      content: Object.assign(this.data.formData, {
+        HANDLER: e.detail.id?e.detail.id:'',
+        TYPE: this.data.selfType.LOOKUP_CODE
+      })
+    })
+
+      this.select = this.selectComponent('#select-content');
+    this.select.set({id:this.data.selfType.LOOKUP_CODE,name:this.data.selfType.LOOKUP_CODE});
+  }
+    
   },
   async submit() {
     const upload = promisify(wx.uploadFile);
     const token = app.getToken();
-    const saveData = this.data.formData;
-
+    let saveData = this.data.formData;
+    
+    if(util.isNull(saveData.HANDLER)){
+      saveData.HANDLER = this.data.typeHandler;
+    }
+ 
     if (util.isNull(saveData.AREA)) {
       wx.showToast({
         title: '请选择区域',

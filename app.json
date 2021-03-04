@@ -26,12 +26,13 @@
     "pages/repair/me/me",
     "pages/prevention/prevention",
     "pages/prevention/comfirm-list/comfirm-list",
-    "pages/prevention/comfirm-content/comfirm-content"
+    "pages/prevention/comfirm-content/comfirm-content",
+    "pages/repair/done/done"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarTitleText": "顺达微服务",
     "navigationBarTextStyle": "black"
   },
   "style": "v2",
