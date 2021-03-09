@@ -1,6 +1,6 @@
 // import { encryptUtil } from '../utils/encryptUtil';
-const formatUrl = 'https://miwebapi.mic.com.cn/';
-// const formatUrl = 'http://localhost:8082/';
+// const formatUrl = 'https://miwebapi.mic.com.cn/';
+const formatUrl = 'http://localhost:8082/';
 const loginUrl = 'global/login';
 const app = getApp();
 const getSelfPrivilege = 'Guid/GetUserFunctions';

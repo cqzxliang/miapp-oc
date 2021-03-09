@@ -105,6 +105,7 @@ Page({
         date_to: '',
         dept_id: '3'
       });
+      
 
       if (serviceRes2 && serviceRes2.data.length > 0) {
         const data = serviceRes2.data.filter((d)=>d.BX_TYPE==='factory');

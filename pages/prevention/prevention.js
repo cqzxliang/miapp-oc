@@ -57,6 +57,7 @@ Page({
       empno: userInfo.EMPNO
     });
     if (dataRes && dataRes.data.length > 0) {
+      //存放已提交过记录
       const historyData = dataRes.data;
       this.setData({
         contact: userInfo.NICK_NAME,
@@ -80,6 +81,7 @@ Page({
 
     wx.lin.initValidateForm(this)
   },
+  //类别切换
   radioChange(r) {
     const data = this.data.historyData.filter((d) => d.TYPE === r.detail.key && d.TIMES === 'first');
     if (data.length > 0) {
@@ -118,6 +120,7 @@ Page({
       })
     }
   },
+  //有无感冒症状切换
   coldChange(r) {
     this.setData({
       formData: Object.assign(this.data.formData, {
@@ -125,6 +128,7 @@ Page({
       })
     })
   },
+  //次数切换
   timesChange(r) {
     const data = this.data.historyData.filter((d) => d.TYPE === '出行廣東省外' && d.TIMES === r.detail.key);
     if (data.length > 0) {
@@ -163,6 +167,7 @@ Page({
       })
     }
   },
+  //返岗时间变更
   timeChange(idate) {
     const diff3 = moment(idate.detail.value).diff(moment(moment().format('YYYY-MM-DD')), 'days')
     if (diff3 < 0) {
@@ -185,6 +190,7 @@ Page({
       })
     })
   },
+  //感冒症状填写
   remarkKeyIn(event) {
     this.setData({
       formData: Object.assign(this.data.formData, {
@@ -192,6 +198,7 @@ Page({
       })
     })
   },
+  //点击添加图片
   addImage(e) {
     if (e.currentTarget.dataset.type === 'yuekang') {
       this.setData({
@@ -219,6 +226,7 @@ Page({
       })
     }
   },
+  //点击删除图片
   removeImage(e) {
     if (e.currentTarget.dataset.type === 'yuekang') {
       this.setData({
@@ -267,6 +275,7 @@ Page({
   onReady: function () {
 
   },
+  //上传图片
   uploadPic: async function (type) {
     //图片上传
     const upload = promisify(wx.uploadFile);
@@ -333,6 +342,7 @@ Page({
     }
     return imageUrl;
   },
+  //提交表单
   async submit() {
 
     if (!this.data.sending) {

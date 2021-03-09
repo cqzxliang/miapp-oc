@@ -3,6 +3,6 @@
   "navigationBarBackgroundColor": "#3963BC",
   "navigationBarTextStyle": "white",
   "usingComponents": {
-    "x-service-list":"/components/comfirm-list/comfirm-list"
+    "x-comfirm-list":"/components/comfirm-list/comfirm-list"
   }
 }

@@ -27,7 +27,6 @@ Page({
     })
   },
  async query(){
-    let userInfo = app.getUserInfo();
     let res = await auth.request('GET', getList, {
       empno:'',
       deptno:this.data.inputValue
@@ -53,9 +52,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow:async function () {
-    let userInfo = app.getUserInfo();
-
-    //宿舍报修
     let res = await auth.request('GET', getList, {
       empno:'',
       deptno:''
