@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "厂区报修申请",
+  "navigationBarBackgroundColor": "#3963BC",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "select": "/components/select/select",
+    "select-empno": "/components/select-empno/select-empno"
+  }
+}

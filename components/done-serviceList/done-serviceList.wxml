@@ -1,0 +1,19 @@
+<l-card type="primary" plaintext="{{true}}" l-class="lclass" bind:tap="goToDistributeContent">
+  <view class="content">
+    <view style="width:100%;">
+      <!-- <view><text>{{scorelist.DOCNO}}</text> <text class="handler">处理人:{{handler}}</text></view> -->
+      <view><text>{{desc}}</text> <text class="handler">单据号:{{servicelist.DOCNO}}</text></view>
+      <view><text>单据状态：{{status}}</text></view>
+      <view><text>地点：{{servicelist.AREA}}--{{servicelist.ROOM_NO}}</text></view>
+      <view><text>需求人:</text><text >{{contact}}</text></view>
+      <view><text>希望时间: {{serviceData}}</text>
+        <text wx:if="{{servicelist.START_TIME||servicelist.START_TIME==='null'}}"
+          class="time">{{servicelist.START_TIME}}~{{servicelist.END_TIME}}</text>
+      </view>
+      <view class="desc" style="width:100%;">
+        <view style="width:30%;">问题描述：</view>
+        <view style="width:70%;"><text>{{servicelist.SERVICE_DESC}}</text></view>
+      </view>
+    </view>
+  </view>
+</l-card>

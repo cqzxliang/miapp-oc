@@ -3,8 +3,9 @@ const formatUrl = 'https://miwebapi.mic.com.cn/';
 // const formatUrl = 'http://localhost:8082/';
 const loginUrl = 'global/login';
 const app = getApp();
-
+const getSelfPrivilege = 'Guid/GetUserFunctions';
 const encryptUtil = require('../utils/encryptUtil');
+const util = require('../utils/util');
 
 export async function login(data = {}) {
     let userName = encryptUtil.Decrypt(data.userName);
@@ -26,11 +27,14 @@ export async function login(data = {}) {
             app.setExpires(expires);
             let user = {};
             Object.assign(user, res.data.User);
+            let priRes = await request('GET', getSelfPrivilege, {
+                moduleID: ''
+              })
+            user.privilege =  priRes.data;
             user.modules = res.data.Modules;
             user.password = password;
             user.userName = userName;
             app.setUserInfo(user);
-
             wx.hideLoading();
             return true;
         } else {
@@ -179,3 +183,20 @@ async function getNewToken(){
     }
     
 }
+
+export  function hasPrivilege(module, fn ) {
+    const userinfo = app.getUserInfo();
+    const privilege = userinfo.privilege;
+    if (util.isArray(privilege)) {
+      return !!privilege
+        .filter(m => m.ROLE_NAME.indexOf(module) > -1)
+        .find(p => p.FUNCTION_URL === fn);
+    }
+    return false;
+  }
+
+export function getLookUp(type){
+    return request('GET', 'IPQA/GetMRILookup', {
+        lookup_type: type
+      });
+}  

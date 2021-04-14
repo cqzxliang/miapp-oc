@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "服務分配",
+  "navigationBarBackgroundColor": "#3963BC",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "select": "/components/select/select",
+    "select-empno": "/components/select-empno/select-empno",
+    "l-toast":"/miniprogram_npm/lin-ui/toast/index"
+  }
+}

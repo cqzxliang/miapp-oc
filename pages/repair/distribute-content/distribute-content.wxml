@@ -1,0 +1,104 @@
+<l-form name="content" is-submit-validate="{{isSubmitValidate}}" l-form-btn-class="l-form-btn-class"
+  bind:linsubmit="submit">
+  <l-form-item label="单据号" name="DOCNO" l-form-label-class="l-form-label-class">
+    <l-input id="DOCNO" value="{{content.DOCNO}}" label-width="170" hide-label show-row="{{false}}" disabled="true"
+      l-input-class="l-input-class" />
+  </l-form-item>
+  <l-form-item label="区域" name="AREA" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+    <l-input id="AREA" value="{{content.AREA}}" label-width="170" hide-label show-row="{{false}}" disabled="true"
+      l-input-class="l-input-class" />
+  </l-form-item>
+  <view wx:if="{{content.BX_TYPE==='dorm'}}">
+    <l-form-item label="宿舍号:" name="ROOM_NO" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+      <l-input id="ROOM_NO" value="{{content.ROOM_NO}}" label-width="170" hide-label show-row="{{false}}"
+        bind:lininput="roomNoKeyIn" disabled="true" l-input-class="l-input-class" />
+    </l-form-item>
+  </view>
+  <view wx:elif="{{content.BX_TYPE==='factory'}}">
+    <l-form-item label="具体位置:" name="ROOM_NO" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+      <l-input id="ROOM_NO" value="{{content.ROOM_NO}}" label-width="170" hide-label show-row="{{false}}"
+        bind:lininput="roomNoKeyIn" disabled="true" l-input-class="l-input-class" />
+    </l-form-item>
+  </view>
+
+  <l-form-item label="问题描述" name="SERVICE_DESC" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+    <l-input id="SERVICE_DESC" value="{{content.SERVICE_DESC}}" label-width="170" hide-label show-row="{{false}}"
+      bind:lininput="serviceDescKeyIn" disabled="true" l-input-class="l-input-class" />
+  </l-form-item>
+  <l-form-item label="附图" name="dept" l-form-label-class="l-form-label-class">
+    <block wx:for="{{imageList}}" wx:key="index">
+      <image style="width: 200rpx; height: 200rpx;" mode="{{item.mode}}" bindtap="preview" data-url="{{item}}"
+        src="{{item}}"></image>
+    </block>
+
+  </l-form-item>
+  <l-form-item label="需求人" name="dept" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+    <l-input id="contact" value="{{contact}}" label-width="170" hide-label show-row="{{false}}" disabled="true"
+      l-input-class="l-input-class" />
+  </l-form-item>
+  <l-form-item label="分机/手机" name="dept" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+    <l-input id="MOBILE" value="{{content.MOBILE}}" label-width="170" hide-label show-row="{{false}}" disabled="true"
+      l-input-class="l-input-class" />
+  </l-form-item>
+  <l-form-item label="希望完成时间" name="SERVICE_DATE" l-form-label-class="l-form-label-class">
+    <l-input id="SERVICE_DATE" value="{{content.SERVICE_DATE}}" label-width="170" hide-label show-row="{{false}}"
+      disabled="true" l-input-class="l-input-class" />
+  </l-form-item>
+  <l-form-item wx:if="{{type==='distribute'}}" label="问题类型" name="TYPE" l-form-label-class="l-form-label-class"
+    rules="{{requiredRules}}">
+    <view class="selectContent">
+      <select wx:if="{{typeList.length>0}}" class="select" id="select" data-index="1" options="{{typeList}}"
+        key="LOOKUP_CODE" text="LOOKUP_CODE" bind:change="typeChange"
+        defaultOption="{{ {id:content.TYPE,name:content.TYPE} }}">
+      </select>
+    </view>
+  </l-form-item>
+  <l-form-item wx:if="{{type==='done'}}" label="问题类型" name="SERVICE_DATE" l-form-label-class="l-form-label-class">
+    <l-input id="TYPE" value="{{content.TYPE}}" label-width="170" hide-label show-row="{{false}}" disabled="true"
+      l-input-class="l-input-class" />
+  </l-form-item>
+  <l-form-item wx:if="{{type==='distribute'}}" label="处理人" name="HANDLER" l-form-label-class="l-form-label-class"
+    rules="{{requiredRules}}">
+    <view class="selectContent">
+      <select-empno wx:if="{{currentHandlerList.length>0}}" class="select" id="select-empno" data-index="1"
+        options="{{currentHandlerList}}" key="DESCRIPTION" text="DESCRIPTION" bind:change="handlerChange">
+      </select-empno>
+    </view>
+  </l-form-item>
+  <l-form-item wx:if="{{type==='done'}}" label="实际处理人" name="HANDLER" l-form-label-class="l-form-label-class"
+    rules="{{requiredRules}}">
+    <view class="selectContent">
+      <select-empno wx:if="{{currentHandlerList.length>0}}" class="select" id="select-empno" data-index="1"
+        options="{{currentHandlerList}}" key="DESCRIPTION" text="DESCRIPTION" bind:change="handlerChange"
+        defaultOption="{{ {id:content.HANDLER,name:content.HANDLER} }}">
+      </select-empno>
+    </view>
+  </l-form-item>
+  <l-form-item wx:if="{{type==='done'}}" label="处理耗时(h)" name="HANDLE_TIME" l-form-label-class="l-form-label-class"
+    rules="{{actQTYRules}}" bind:linvalidate="handleTimeCheck" >
+    <l-input id="HANDLE_TIME" type="number" value="{{content.HANDLE_TIME}}" label-width="170" hide-label
+      show-row="{{false}}" l-input-class="l-input-class" bind:lininput="handleTimeKeyIn" />
+  </l-form-item>
+  <l-form-item wx:if="{{type==='done'}}" label="实际完成时间" name="BACK_TIME" l-form-label-class="l-form-label-class" bind:linvalidate=""
+    rules="{{requiredRules}}">
+    <picker style="padding-left:26rpx;"  mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1"
+      bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+      <view class="tui-picker-detail">
+        {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}}
+        {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}
+      </view>
+    </picker>
+  </l-form-item>
+  <l-form-item wx:if="{{type==='done'}}" label="处理备注" name="REMARK" l-form-label-class="l-form-label-class">
+    <l-input id="REMARK" value="{{content.REMARK}}" label-width="170" hide-label show-row="{{false}}"
+      l-input-class="l-input-class" bind:lininput="remarkKeyIn" />
+  </l-form-item>
+</l-form>
+
+<view class="submit" wx:if="{{type==='distribute'}}">
+  <l-button bind:tap="submit" width="600" style="margin-top:30rpx" size="large">提交</l-button>
+</view>
+<view class="submit" wx:if="{{type==='done'}}">
+  <l-button bind:tap="submit2" width="600" style="margin-top:30rpx" size="large">处理完成</l-button>
+</view>
+<l-toast />

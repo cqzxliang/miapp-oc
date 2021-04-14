@@ -1,3 +1,5 @@
+const auth = require('../../core/auth');
+const app = getApp();
 // pages/application/application.js
 Page({
 
@@ -5,14 +7,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    isPrevention:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let isPrevention=  auth.hasPrivilege('Prevention_Confirm','preventionConfirm');
+    this.setData({
+      isPrevention
+    })
   },
 
   /**
@@ -34,6 +39,29 @@ Page({
     if (page.currentTarget.id === '1') {
       wx.navigateTo({
         url: '/pages/exit-factory/exit-factory'
+      })
+    }
+
+    if (page.currentTarget.id === '2') {
+      wx.navigateTo({
+        url: '/pages/repair/repair'
+      })
+    }
+
+    if (page.currentTarget.id === '3') {
+      wx.navigateTo({
+        url: '/pages/score/score'
+      })
+    }
+
+    if (page.currentTarget.id === '4') {
+      wx.navigateTo({
+        url: '/pages/prevention/prevention'
+      })
+    }
+    if (page.currentTarget.id === '5') {
+      wx.navigateTo({
+        url: '/pages/prevention/comfirm-list/comfirm-list'
       })
     }
   },

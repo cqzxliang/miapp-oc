@@ -1,8 +1,8 @@
 <view wx:if="{{p_no}}">
-<l-input label="单据号" value="{{p_no}}" l-label-class="l-label-class" l-input-class="l-input-class" disabled="{{true}}"/>
-<l-input label="单据状态" value="{{status}}" l-label-class="l-label-class" l-input-class="l-input-class" disabled="{{true}}"/>
+<l-input label="单据号" value="{{p_no}}" l-label-class="l-label-class" l-input-class="l-input-class" disabled="{{true}}" l-input-class="l-input-class"/>
+<l-input label="单据状态" value="{{status}}" l-label-class="l-label-class" l-input-class="l-input-class" disabled="{{true}}" l-input-class="l-input-class"/>
 </view>
-<l-input label="單據類型" value="{{typeDes}}" l-label-class="l-label-class" l-input-class="l-input-class" disabled="{{true}}"/>
+<l-input label="單據類型" value="{{typeDes}}" l-label-class="l-label-class" l-input-class="l-input-class" disabled="{{true}}" l-input-class="l-input-class"/>
 <l-list title="*物品清單" data-page="doc" bind:lintap="goToPage" l-class="l-list" l-content-class="l-content-class"
    l-right-class="l-right-class">
    <view slot="right-section">

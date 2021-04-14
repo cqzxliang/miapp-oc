@@ -1,0 +1,60 @@
+<l-form name="content" is-submit-validate="{{isSubmitValidate}}" l-form-btn-class="l-form-btn-class"
+  bind:linsubmit="submit">
+  <l-form-item label="单据号" name="DOCNO" l-form-label-class="l-form-label-class" >
+    <l-input id="AREA" value="{{content.DOCNO}}" label-width="170" hide-label show-row="{{false}}" disabled="true" l-input-class="l-input-class"/>
+  </l-form-item>
+  <l-form-item label="区域" name="AREA" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+    <l-input id="AREA" value="{{content.AREA}}" label-width="170" hide-label show-row="{{false}}" disabled="true" l-input-class="l-input-class"/>
+  </l-form-item>
+  <view wx:if="{{content.BX_TYPE==='dorm'}}">
+    <l-form-item label="宿舍号:" name="ROOM_NO" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+      <l-input id="dept" value="{{content.ROOM_NO}}" label-width="170" hide-label show-row="{{false}}"
+        bind:lininput="roomNoKeyIn" disabled="true" l-input-class="l-input-class"/>
+    </l-form-item>
+  </view>
+  <view wx:elif="{{content.BX_TYPE==='factory'}}">
+    <l-form-item label="具体位置:" name="ROOM_NO" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+      <l-input id="dept" value="{{content.ROOM_NO}}" label-width="170" hide-label show-row="{{false}}"
+        bind:lininput="roomNoKeyIn" disabled="true" l-input-class="l-input-class"/>
+    </l-form-item>
+  </view>
+
+  <l-form-item label="问题描述" name="SERVICE_DESC" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+    <l-input id="dept" value="{{content.SERVICE_DESC}}" label-width="170" hide-label show-row="{{false}}"
+      bind:lininput="serviceDescKeyIn" disabled="true" l-input-class="l-input-class"/>
+  </l-form-item>
+  <l-form-item label="附图" name="dept" l-form-label-class="l-form-label-class">
+    <block wx:for="{{imageList}}" wx:key="index">
+      <image style="width: 200rpx; height: 200rpx;" mode="{{item.mode}}" bindtap="preview" data-url="{{item}}"
+        src="{{item}}"></image>
+    </block>
+  </l-form-item>
+  <l-form-item label="希望完成时间" name="SERVICE_DATE" l-form-label-class="l-form-label-class">
+    <l-input id="dept" value="{{content.SERVICE_DATE}}" label-width="170" hide-label show-row="{{false}}"
+      disabled="true" l-input-class="l-input-class"/>
+  </l-form-item>
+  <l-form-item label="問題類型" name="TYPE" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+    <l-input id="TYPE" value="{{content.TYPE}}" label-width="170" hide-label show-row="{{false}}"
+         disabled="true" l-input-class="l-input-class"/>
+  </l-form-item>
+  <l-form-item label="處理人" name="HANDLER" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+    <l-input id="HANDLER" value="{{handler}}" label-width="170" hide-label show-row="{{false}}"
+         disabled="true" l-input-class="l-input-class"/>
+  </l-form-item>
+  <l-form-item wx:if="{{content.STATUS==='Scoring'}}" label="评分" name="SCORE" l-form-label-class="l-form-label-class" rules="{{requiredRules}}">
+    <l-rate score="{{content.SCORE}}" bind:linchange="changeScore" />
+  </l-form-item>
+  <l-form-item wx:if="{{content.STATUS==='Scoring'}}" label="评语" name="USER_COMMENT" l-form-label-class="l-form-label-class">
+    <l-textarea id="USER_COMMENT"  label-width="170" hide-label show-row="{{false}}"
+    value="{{content.USER_COMMENT}}" indicator="{{false}}" auto-height="{{true}}" bind:lininput="changeComment" l-inner-class="l-inner-class"/>
+  </l-form-item>
+</l-form>
+
+<view class="submit" wx:if="{{content.STATUS==='Scoring'}}">
+  <l-button bind:tap="submit" width="600" style="margin-top:30rpx" size="large">评价</l-button>
+</view>
+
+
+<!-- <view class="submit">
+  <l-button bind:tap="submit" width="600" style="margin-top:30rpx" size="large">提交</l-button>
+</view> -->

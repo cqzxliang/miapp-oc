@@ -53,18 +53,17 @@ Page({
     hasNext: false,
   },
   bindMultiPickerChange: function (e) {
-    console.log(e.detail.value,1);
     
     this.setData({
       multiIndex: e.detail.value
     })
 
     if(e.detail.value === [0,0]){
-      console.log(333);
+
     }
   },
   bindMultiPickerColumnChange: async function (e) {
-    console.log(e,2);
+
     var data = {
       multiArray: this.data.multiArray,
       multiIndex: this.data.multiIndex

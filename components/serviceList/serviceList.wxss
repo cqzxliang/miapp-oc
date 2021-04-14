@@ -1,0 +1,22 @@
+.lclass{
+  border-radius: 25rpx !important;
+  margin-top: 20rpx !important;
+  margin-bottom: 20rpx !important;
+}
+
+.content{
+  display: flex;
+}
+
+.handler{
+  padding-left: 30rpx;
+}
+
+.time{
+  padding-left: 30rpx;
+}
+
+.desc{
+  display: flex;
+  flex-direction: row;
+}

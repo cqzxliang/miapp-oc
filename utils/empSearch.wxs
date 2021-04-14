@@ -1,0 +1,17 @@
+
+
+// const util = require('../utils/util');
+// const auth = require('../core/auth');
+// const getUserUrl = 'Guid/GetUserLikeNoSite';
+
+ function changeName(str, format) {
+ 
+
+  // let res = await auth.request('GET', 'GetUserLikeNoSite', {
+  //   emp_name: str
+  // })
+  // console.log(res);
+  
+  return str+'a';
+}
+module.exports.changeName = changeName;

@@ -1,6 +1,18 @@
 <l-grid >
-    <l-grid-item id="1"  key="1" slot="1" bind:tap="goToPage">
+    <!-- <l-grid-item id="1"  key="1" slot="1" bind:tap="goToPage">
         <image class="pic" src="/images/car.png"></image>
         <view class="text">出厂证</view>
+     </l-grid-item> -->
+     <l-grid-item id="2"  key="2" slot="2" bind:tap="goToPage">
+        <image class="pic" src="/images/repair.png"></image>
+        <view class="text">报修管理</view>
      </l-grid-item>
+     <l-grid-item id="3"  key="3" slot="3" bind:tap="goToPage">
+        <image class="pic" src="/images/score.png"></image>
+        <view class="text">服务评价</view>
+     </l-grid-item>
+     <!-- <l-grid-item id="4"  key="4" slot="4" bind:tap="goToPage">
+        <image class="pic" src="/images/prevention.png"></image>
+        <view class="text">返崗防疫調查</view>
+     </l-grid-item> -->
 </l-grid>

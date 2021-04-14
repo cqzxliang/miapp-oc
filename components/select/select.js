@@ -1,3 +1,5 @@
+const util = require("../../utils/util");
+
 Component({
   properties: {
     options: {
@@ -26,9 +28,8 @@ Component({
     current: {}
   },
   methods: {
-    optionTap(e) {
-      
-      let dataset = e.target.dataset
+    optionTap(e) {   
+      let dataset = e.target.dataset   
       this.setData({
         current: dataset,
         isShow: false
@@ -49,11 +50,21 @@ Component({
       this.setData({
         isShow: false
       })
-    }
+    },
+    clean() {
+      this.setData({
+        current: {}
+      })
+    },
+    set(e) {
+      this.setData({
+        current: e
+      })
+    },
   },
   lifetimes: {
     attached() {
-      // 属性名称转换, 如果不是 { id: '', name:'' } 格式，则转为 { id: '', name:'' } 格式
+      // 属性名称转换, 如果不是 { id: '', name:'' } 格式，则转为 { id: '', name:'' } 格式     
       let result = []
       if (this.data.key !== 'id' || this.data.text !== 'name') {       
         for (let item of this.data.options) {
@@ -64,9 +75,13 @@ Component({
         result = this.data.options;
       }
       this.setData({
-        current: Object.assign({},this.data.defaultOption),
         result: result
       })
+      if (!util.isNull(this.data.defaultOption.id)){
+        this.setData({
+          current: Object.assign({},this.data.defaultOption)
+        })
+      }
     }
   }
 })
